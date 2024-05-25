@@ -12,11 +12,14 @@
   "devDependencies": {
     "@cap-js/sqlite": "^1",
     "@sap/eslint-plugin-cds": "^3",
-    "@sap/ux-specification": "^1.120.10",
+    "@sap/ux-specification": "^1.120.11",
     "eslint": "^9"
   },
   "scripts": {
     "start": "cds-serve",
     "watch-centrallibrary": "cds watch --open centrallibrary/webapp/index.html?sap-ui-xx-viewCache=false"
-  }
+  },
+  "sapux": [
+    "app/centrallibrary"
+  ]
 }
