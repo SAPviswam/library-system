@@ -1,0 +1,68 @@
+<mvc:View
+    controllerName="com.app.centrallibrary.controller.User"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    displayBlock="true">
+    
+    <App id="userApp">
+        <Page id="userPage" title="User Page">
+            <content>
+                <VBox id="userVBox">
+                    <Title id="userTitle" text="User Dashboard" level="H2"/>
+                    <Label id="userLabelBorrowedBooks" text="Borrowed Books:"/>
+                    
+                    <Toolbar id="userToolbar">
+                        <ToolbarSpacer id="userToolbarSpacer"/>
+                        <SearchField id="userSearchField" placeholder="Search..." width="200px"/>
+                    </Toolbar>
+                    
+                    <table:Table id="userBookDetailsTable" visibleRowCount="5" selectionMode="MultiToggle">
+                        <table:extension>
+                            <OverflowToolbar id="userOverflowToolbar">
+                                <ToolbarSpacer id="userOverflowToolbarSpacer"/>
+                                <Button id="userAddButton" icon="sap-icon://add" tooltip="Add Book"/>
+                            </OverflowToolbar>
+                        </table:extension>
+                        
+                        <table:Column id="userColumnISBN">
+                            <Label id="userLabelISBN" text="ISBN"/>
+                            <table:template>
+                                <Text id="userTextISBN" text="{ISBN}"/>
+                            </table:template>
+                        </table:Column>
+                        
+                        <table:Column id="userColumnTitle">
+                            <Label id="userLabelTitle" text="Title"/>
+                            <table:template>
+                                <Text id="userTextTitle" text="{Title}"/>
+                            </table:template>
+                        </table:Column>
+                        
+                        <table:Column id="userColumnAuthor">
+                            <Label id="userLabelAuthor" text="Author"/>
+                            <table:template>
+                                <Text id="userTextAuthor" text="{Author}"/>
+                            </table:template>
+                        </table:Column>
+                        
+                        <table:Column id="userColumnQuantity">
+                            <Label id="userLabelQuantity" text="Quantity"/>
+                            <table:template>
+                                <Text id="userTextQuantity" text="{Quantity}"/>
+                            </table:template>
+                        </table:Column>
+                        
+                        <table:Column id="userColumnGenre">
+                            <Label id="userLabelGenre" text="Genre"/>
+                            <table:template>
+                                <Text id="userTextGenre" text="{Genre}"/>
+                            </table:template>
+                        </table:Column>
+                        
+                    </table:Table>
+                </VBox>
+            </content>
+        </Page>
+    </App>
+</mvc:View>

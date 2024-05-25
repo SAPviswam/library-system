@@ -93,19 +93,35 @@
         "viewPath": "com.app.centrallibrary.view",
         "controlAggregation": "pages",
         "controlId": "app",
-        "clearControlAggregation": false
+        "clearControlAggregation": false,
+        "path": "com.app.centrallibrary.view"
       },
       "routes": [
         {
           "name": "RouteAuthenticate",
           "pattern": ":?query:",
-          "target": [
-            "TargetAuthenticate"
-          ]
+          "target": "RouteAuthenticate"
+        },
+        {
+          "name": "RouteAdmin",
+          "pattern": "Admin",
+          "target": "RouteAdmin"
+        },
+        {
+          "pattern": ":?query:",
+          "name": "TargetAuthenticate",
+          "target": "TargetAuthenticate"
         }
       ],
       "targets": {
         "TargetAuthenticate": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Authenticate",
+          "viewName": "Authenticate"
+        },
+        "TargetAd": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
