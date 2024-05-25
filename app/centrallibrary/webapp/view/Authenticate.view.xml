@@ -1,7 +1,118 @@
-<mvc:View controllerName="com.app.centrallibrary.controller.Authenticate"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <content />
+<mvc:View
+    controllerName="com.app.centrallibrary.controller.Authenticate"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+>
+    <Page
+        id="page"
+        class="loginpage"
+        titleAlignment="Center"
+        title="{i18n>title}"
+    >
+        <VBox
+            id="_IDGenVBox1"
+            class="sapUiSmallMargin"
+            alignItems="Center"
+        >
+            <form:SimpleForm
+                id="idSimpleForm"
+                layout="ResponsiveGridLayout"
+                class="form"
+            >
+                <form:content>
+                    <Title
+                        id="title1"
+                        text="Central Library"
+                        textAlign="Center"
+                        class="title1"
+                    />
+                    <Label id="_IDGenLabel2" />
+                    <Title
+                        id="title2"
+                        text="Login Details"
+                        textAlign="Left"
+                        class="title2"
+                    />
+                    <Label
+                        id="usernameLabel"
+                        text="Username"
+                        textAlign="Initial"
+                    />
+                    <Input
+                        class="input"
+                        id="user"
+                        placeholder="Enter Username"
+                        width="100%"
+                        textAlign="Initial"
+                    />
+                    <Label
+                        id="passwordLabel"
+                        text="Password"
+                        textAlign="Initial"
+                    />
+                    <Input
+                        class="input"
+                        id="pwd"
+                        type="Password"
+                        placeholder="Enter Password"
+                        width="100%"
+                        textAlign="Initial"
+                    />
+                    <core:Title id="_IDGenTitle2" />
+                    <VBox
+                        id="_IDGenVBox2"
+                        alignItems="Center"
+                        class="sapUiSmallMarginTop"
+                    >
+                        <HBox
+                            id="_IDGenHBox1"
+                            class="btn"
+                        >
+                            <Button
+                                icon="sap-icon://visits"
+                                class="button"
+                                id="idlogin"
+                                text="Login"
+                                type="Emphasized"
+                                width="100%"
+                                press="onBtnClick"
+                            />
+                            <ToolbarSpacer
+                                id="_IDGenToolbarSpacer1"
+                                width="20px"
+                            />
+                            <Button
+                                icon="sap-icon://clear-all"
+                                class="button"
+                                id="idclear"
+                                text="Clear"
+                                type="Emphasized"
+                                width="100%"
+                                press="onClearFilterPress"
+                            />
+                        </HBox>
+                    </VBox>
+                    <VBox
+                        id="_IDGenVBox4"
+                        alignItems="Stretch"
+                        class="sapUiSmallMarginTop"
+                    >
+                        <Button
+                            id="signUpButton"
+                            icon="sap-icon://add-employee"
+                            class="SignUp"
+                            text="Sign Up"
+                            type="Attention"
+                            width="100%"
+                            press="onBtnSignup"
+                        />
+                    </VBox>
+                </form:content>
+            </form:SimpleForm>
+        </VBox>
     </Page>
 </mvc:View>
+
