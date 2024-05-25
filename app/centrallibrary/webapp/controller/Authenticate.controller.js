@@ -7,6 +7,11 @@ function (Controller) {
     return Controller.extend("com.app.centrallibrary.controller.Authenticate", {
         onInit: function () {
 
-        }
+        },
+        onClearFilterPress: function () {
+            this.byId("user").setValue("");
+            this.byId("pwd").setValue("");
+        },
+
     });
 });
