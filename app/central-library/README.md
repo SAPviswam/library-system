@@ -1,15 +1,15 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Sat May 25 2024 16:54:19 GMT+0000 (Coordinated Universal Time)|
+|**Generation Date and Time**<br>Sat May 25 2024 18:27:58 GMT+0000 (Coordinated Universal Time)|
 |**App Generator**<br>@sap/generator-fiori-freestyle|
 |**App Generator Version**<br>1.13.5|
 |**Generation Platform**<br>SAP Business Application Studio|
 |**Template Used**<br>simple|
 |**Service Type**<br>Local Cap|
 |**Service URL**<br>http://localhost:4004/odata/v4/catalog/
-|**Module Name**<br>centrallibrary|
-|**Application Title**<br>Central library |
+|**Module Name**<br>central-library|
+|**Application Title**<br>library|
 |**Namespace**<br>com.app|
 |**UI5 Theme**<br>sap_horizon|
 |**UI5 Version**<br>1.124.0|
@@ -17,7 +17,7 @@
 |**Enable TypeScript**<br>False|
 |**Add Eslint configuration**<br>False|
 
-## centrallibrary
+## central-library
 
 An SAP Fiori application.
 
@@ -25,7 +25,7 @@ An SAP Fiori application.
 
 -   This app has been generated using the SAP Fiori tools - App Generator, as part of the SAP Fiori tools suite.  In order to launch the generated app, simply start your CAP project and navigate to the following location in your browser:
 
-http://localhost:4004/centrallibrary/webapp/index.html
+http://localhost:4004/central-library/webapp/index.html
 
 #### Pre-requisites:
 

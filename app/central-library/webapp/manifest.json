@@ -1,3 +1,4 @@
+
 {
   "_version": "1.59.0",
   "sap.app": {
@@ -13,7 +14,7 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:basic",
       "version": "1.13.5",
-      "toolsId": "a1dfd0dc-8c76-43c6-8966-30a8f0c04adb"
+      "toolsId": "3a1b9810-3210-41c6-a3ec-d12fca563f9b"
     },
     "dataSources": {
       "mainService": {
@@ -22,6 +23,19 @@
         "settings": {
           "annotations": [],
           "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "library system-display": {
+          "semanticObject": "library system",
+          "action": "display",
+          "title": "{{flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
         }
       }
     }
@@ -93,24 +107,29 @@
         "viewPath": "com.app.centrallibrary.view",
         "controlAggregation": "pages",
         "controlId": "app",
-        "clearControlAggregation": false,
-        "path": "com.app.centrallibrary.view"
+        "clearControlAggregation": false
       },
       "routes": [
         {
           "name": "RouteAuthenticate",
           "pattern": ":?query:",
-          "target": "RouteAuthenticate"
+          "target": [
+            "TargetAuthenticate"
+          ]
+        },
+        {
+          "name": "RouteUser",
+          "pattern": "user:?query:",
+          "target": [
+            "TargetUser"
+          ]
         },
         {
           "name": "RouteAdmin",
-          "pattern": "Admin",
-          "target": "RouteAdmin"
-        },
-        {
-          "pattern": ":?query:",
-          "name": "TargetAuthenticate",
-          "target": "TargetAuthenticate"
+          "pattern": "admin:?query:",
+          "target": [
+            "TargetAdmin"
+          ]
         }
       ],
       "targets": {
@@ -121,12 +140,19 @@
           "viewId": "Authenticate",
           "viewName": "Authenticate"
         },
-        "TargetAd": {
+        "TargetUser": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "Authenticate",
-          "viewName": "Authenticate"
+          "viewId": "User",
+          "viewName": "User"
+        },
+        "TargetAdmin": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Admin",
+          "viewName": "Admin"
         }
       }
     },

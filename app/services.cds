@@ -1,2 +1,2 @@
 
-using from './centrallibrary/annotations';
+using from './central-library/annotations';

@@ -1,0 +1,100 @@
+<mvc:View
+    controllerName="com.app.centrallibrary.controller.Admin"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:m="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:layout="sap.ui.layout">
+    
+    <m:VBox id="idAdminVBox" class="sapUiSmallMargin">
+        <!-- Toolbar with navigation and action buttons -->
+        <m:Toolbar id="idAdminToolbar">
+            <m:Button id="idNavButton" icon="sap-icon://nav-back" press="onPressback" />
+            <m:ToolbarSpacer id="_IDGenToolbarSpacer1" />
+            <m:Title id="idAdminPageTitle" text="Admin Page" />
+            <m:ToolbarSpacer id="_IDGenToolbarSpacer2" />
+            <m:Button id="idFullScreenButton" icon="sap-icon://full-screen" press="onPressFullScreen" />
+            <m:Button id="idNotificationButton" icon="sap-icon://bell" press="onPressNotification" />
+            <m:Button id="idProfileButton" icon="sap-icon://person-placeholder" press="onPressProfile" />
+        </m:Toolbar>
+
+        <!-- Admin Dashboard -->
+        <f:SimpleForm
+            id="idAdminDashboardForm"
+            editable="false"
+            layout="ResponsiveGridLayout"
+            title="Admin Dashboard"
+            labelSpanXL="3"
+            labelSpanL="3"
+            labelSpanM="3"
+            labelSpanS="12"
+            adjustLabelSpan="false"
+            emptySpanXL="4"
+            emptySpanL="4"
+            emptySpanM="4"
+            emptySpanS="0"
+            columnsXL="1"
+            columnsL="1"
+            columnsM="1"
+            singleContainerFullSize="false">
+            
+            <f:content>
+                <m:Label id="_IDGenLabel1" text="Total Books:" />
+                <m:Text id="idTotalBooksText" text="{/Book/$count}" />
+                <m:Label id="_IDGenLabel2" text="Active loans:" />
+                <m:Text id="idActiveLoansText" text="{/Loan/$count}" />
+            </f:content>
+        </f:SimpleForm>
+
+        <!-- Book Details Table -->
+        <m:Title id="idBookDetailsTitle" text="Book Details" level="H2" />
+        <m:Table
+            id="idBookTable"
+            alternateRowColors="true"
+            mode="MultiSelect"
+            items="{/Book}"
+            selectionChange="onSelectBook">
+            
+            <m:headerToolbar>
+                <m:OverflowToolbar id="idBookTableToolbar">
+                    <m:Title id="idBooksTitle" text="Books" />
+                    <m:ToolbarSpacer id="_IDGenToolbarSpacer3" />
+                    <m:Button id="idAddButton" icon="sap-icon://add" press="onPressAdd" />
+                    <m:Button id="idDeleteButton" icon="sap-icon://delete" press="onPressDelete" />
+                    <m:Button id="idEditButton" icon="sap-icon://edit" press="onPressEdit" />
+                </m:OverflowToolbar>
+            </m:headerToolbar>
+
+            <m:columns>
+                <m:Column id="_IDGenColumn1">
+                    <m:Text id="_IDGenText1" text="ISBN" />
+                </m:Column>
+                <m:Column id="_IDGenColumn2">
+                    <m:Text id="_IDGenText2" text="Title" />
+                </m:Column>
+                <m:Column id="_IDGenColumn3">
+                    <m:Text id="_IDGenText3" text="Author" />
+                </m:Column>
+                <m:Column id="_IDGenColumn4">
+                    <m:Text id="_IDGenText4" text="Quantity" />
+                </m:Column>
+                <m:Column id="_IDGenColumn5">
+                    <m:Text id="_IDGenText5" text="Genre" />
+                </m:Column>
+            </m:columns>
+            
+            <m:items>
+                <m:ColumnListItem id="_IDGenColumnListItem1">
+                    <m:cells>
+                        <m:Text id="_IDGenText6" text="{ISBN}" />
+                        <m:Text id="_IDGenText7" text="{title}" />
+                        <m:Text id="_IDGenText8" text="{author}" />
+                        <m:Text id="_IDGenText9" text="{quantity}" />
+                        <m:Text id="_IDGenText10" text="{genre}" />
+                    </m:cells>
+                </m:ColumnListItem>
+            </m:items>
+        </m:Table>
+    </m:VBox>
+</mvc:View>

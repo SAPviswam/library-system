@@ -17,9 +17,11 @@
   },
   "scripts": {
     "start": "cds-serve",
-    "watch-centrallibrary": "cds watch --open centrallibrary/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-centrallibrary": "cds watch --open centrallibrary/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-central-library": "cds watch --open central-library/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "sapux": [
-    "app/centrallibrary"
+    "app/centrallibrary",
+    "app/central-library"
   ]
 }
