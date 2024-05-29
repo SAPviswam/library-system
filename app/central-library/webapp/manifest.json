@@ -121,7 +121,7 @@
         },
         {
           "name": "RouteUser",
-          "pattern": "user:?query:",
+          "pattern": "User/{userId}",
           "target": ["TargetUser"],
           "greedy": false,
           "transition": "slide"
@@ -129,7 +129,7 @@
       
         {
           "name": "RouteAdmin",
-          "pattern": "admin:?query:",
+          "pattern": "Admin/{userId}",
           "target": ["TargetAdmin"]
         },
         {

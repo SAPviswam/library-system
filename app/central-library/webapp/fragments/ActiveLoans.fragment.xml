@@ -15,7 +15,7 @@
             <Table
                 id="idLoanTable"
                 inset="false"
-                items="{/Loans}"
+                items="{/User}"
                 mode="MultiSelect"
                 multiSelectMode="SelectAll"
             >
@@ -75,15 +75,15 @@
                         <cells>
                             <Text
                                 id="idLoanTableNameValue"
-                                text=""
+                                text="{}"
                             />
                             <Text
                                 id="idLoanTableUserIdValue"
-                                text=""
+                                text="{}"
                             />
                             <Text
                                 id="idLoanTableBookNameValue"
-                                text=""
+                                text="{}"
                             />
                             <Text
                                 id="idLoanTableDueDateValue"

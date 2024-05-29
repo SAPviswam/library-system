@@ -1,136 +1,3 @@
-
-
-// sap.ui.define([
-//     "sap/ui/core/mvc/Controller",
-//     "sap/ui/model/json/JSONModel",
-//     "sap/ui/core/Fragment",
-//     "sap/ui/core/UIComponent",
-//     "sap/ui/core/routing/History",
-//     "sap/m/MessageToast"
-// ], function (Controller, JSONModel, Fragment, UIComponent, History, MessageToast) {
-//     "use strict";
-
-//     return Controller.extend("com.app.centrallibrary.controller.Admin", {
-//         onInit: function () {
-//             var oBookModel = new JSONModel({
-//                 Book: []
-//             });
-//             this.getView().setModel(oBookModel, "bookModel");
-
-//             this._loadCSVData();
-//         },
-
-//         _loadCSVData: function () {
-//             var oModel = this.getView().getModel("bookModel");
-
-//         //     jQuery.ajax({
-//         //         url: "model/books.csv",
-//         //         dataType: "text",
-//         //         success: function (data) {
-//         //             var parsedData = Papa.parse(data, {
-//         //                 header: true,
-//         //                 dynamicTyping: true
-//         //             });
-
-//         //             if (parsedData.errors.length === 0) {
-//         //                 oModel.setProperty("/Book", parsedData.data);
-//         //             } else {
-//         //                 MessageToast.show("Error parsing CSV file");
-//         //             }
-//         //         },
-//             // });
-//         },
-
-//         onPressback: function () {
-//             var oRouter = UIComponent.getRouterFor(this);
-//             oRouter.navTo("RouteAuthenticate");
-//         },
-
-//         onPressFullScreen: function () {
-//             var oView = this.getView();
-//             var oPage = oView.byId("idAdminVBox");
-
-//             if (oPage.hasStyleClass("fullscreen")) {
-//                 oPage.removeStyleClass("fullscreen");
-//             } else {
-//                 oPage.addStyleClass("fullscreen");
-//             }
-//         },
-
-//         onPressNotification: function () {
-//             // Handle notification button press
-//         },
-
-//         onPressProfile: function () {
-//             // Handle profile button press
-//         },
-
-//         async onPressAdd(){
-//             this.oDialogAdd ??= await this.loadFragment({
-//                 name: "com.app.centrallibrary.fragments.Adddata"
-//             });
-
-//             this.oDialogAdd.open();
-//         },
-
-
-//         onAddNewBook: function () {
-//             var oView = this.getView();
-
-//             // Capture the input values
-//             var sISBN = oView.byId("ISBNInput").getValue();
-//             var sTitle = oView.byId("BookInput").getValue();
-//             var sAuthor = oView.byId("AuthorInput").getValue();
-//             var sQuantity = oView.byId("quantityInput").getValue();
-//             var sGenre = oView.byId("genreInput").getValue();
-
-//             // // Create a new book object
-//             var oNewBook = {
-//                 ISBN: sISBN,
-//                 title: sTitle,
-//                 author: sAuthor,
-//                 quantity: sQuantity,
-//                 genre: sGenre
-//             };
-
-//             // new v4
-//                 var oContext = this.getView().byId("idBookTable").getBinding("items")
-//                 .create(oNewBook);
-//             // Close the dialog
-//             this.oDialogAdd.close();
-//         },
-
-//         onCancel: function(){
-//             this.oDialogAdd.close();
-//         },
-
-//         onPressDelete : async function(){
- 
-//             var oSelected = this.byId("idBookTable").getSelectedItem();
-//             if (oSelected) {
-//                 var oISBN = oSelected.getBindingContext().getObject().isbn;
-     
-//                 oSelected.getBindingContext().delete("$auto").then(function () {
-//                     sap.m.MessageToast.show(" SuccessFully Deleted");
-//                 },
-//                     function (oError) {
-//                         sap.m.MessageToast.show("Deletion Error: ", oError);
-//                     });
-//                 this.getView().byId("idBooksTable").getBinding("items").refresh();
-     
-//             } else {
-//                 sap.m.MessageToast.show("Please Select a Row to Delete");
-//             }
-//         },
-        
-        
-//         onPressEdit: function () {
-//             // Handle edit button press
-//         }
-//     });
-// });
-
-
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
@@ -152,6 +19,18 @@ sap.ui.define([
             this.getView().setModel(oBookModel, "bookModel");
 
             this._loadCSVData();
+            const oRouter = this.getOwnerComponent().getRouter();
+            oRouter.attachRoutePatternMatched(this.onCurrentUserDetails, this);
+        },
+        onCurrentUserDetails: function (oEvent) {
+            debugger
+            const { userId } = oEvent.getParameter("arguments");
+            this.ID = userId;
+            const sRouterName = oEvent.getParameter("name");
+            const oForm = this.getView().byId("idAdminPage");
+            oForm.bindElement(`/User(${userId})`, {
+                expand: ''
+            });
         },
 
         _loadCSVData: function () {
@@ -182,7 +61,7 @@ sap.ui.define([
 
         onPressFullScreen: function () {
             var oView = this.getView();
-            var oPage = oView.byId("idAdminVBox");
+            var oPage = oView.byId("idAdminPage");
 
             if (oPage.hasStyleClass("fullscreen")) {
                 oPage.removeStyleClass("fullscreen");
@@ -283,7 +162,7 @@ sap.ui.define([
             var oBinding = oTable.getBinding("items");
             oBinding.filter(aFilters, "Application");
         },
-       
+
         async onPressActiveloans(){
             this.oDialogLoan ??= await this.loadFragment({
                 name: "com.app.centrallibrary.fragments.ActiveLoans"
@@ -313,7 +192,8 @@ sap.ui.define([
             }
             return this.oDialogProfile;
         },
-
+        
+        
         onCloseProfileDialog: function () {
             if (this.oDialogProfile) {
                 this.oDialogProfile.close();
@@ -335,3 +215,4 @@ sap.ui.define([
         },
     });
 });
+

@@ -7,7 +7,7 @@
     xmlns:l="sap.ui.layout"
     xmlns:layout="sap.ui.layout"
     xmlns="sap.m">
-
+<Page id="idAdminPage">
     <VBox id="idAdminVBox" class="sapUiSmallMargin">
         <!-- Toolbar with navigation and action buttons -->
         <Toolbar id="idAdminToolbar">
@@ -17,7 +17,7 @@
             <ToolbarSpacer id="_IDGenToolbarSpacer2" />
             <Button id="idFullScreenButton" icon="sap-icon://full-screen" press="onPressFullScreen" />
             <!-- <Button id="idNotificationButton" icon="sap-icon://bell" press="onPressNotification" /> -->
-            <Button id="idProfileButton" icon="sap-icon://person-placeholder" press="onPressProfile" />
+            <Button id="idProfileButton" icon="sap-icon://person-placeholder" press="onPressProfile"/>
         </Toolbar>
 
         <!-- Admin Dashboard -->
@@ -42,6 +42,8 @@
             singleContainerFullSize="false">
             
             <f:content>
+                <!-- <Label text="username"></Label> -->
+                <Text id="idTotalBooksText0" text="User name" />
                 <Label id="_IDGenLabel1" text="Total Books" />
                 <Text id="idTotalBooksText" text="{}" />
                 <Label id="_IDGenLabel2" text="Active loans" />
@@ -101,4 +103,5 @@
             </items>
         </Table>
     </VBox>
+    </Page>
 </mvc:View>

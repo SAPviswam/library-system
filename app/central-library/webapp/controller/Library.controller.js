@@ -9,8 +9,9 @@ sap.ui.define(
         onInit: function() {
         },
         onPressLogin: function () {
+          debugger
             // get router instance
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            var oRouter = this.getOwnerComponent().getRouter()
             // navigate to RouteLibrary
             oRouter.navTo("RouteAuthenticate");
           },

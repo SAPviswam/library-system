@@ -7,28 +7,43 @@ sap.ui.define([
   "use strict";
 
   return Controller.extend("com.app.centrallibrary.controller.User", {
-    onInit: function() {
-      var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-      oRouter.getRoute("RouteUser").attachMatched(this._onRouteMatched, this);
-  },
-  _onRouteMatched: function(oEvent) {
-      var oArgs = oEvent.getParameter("arguments");
-      var sUsername = oArgs.username;
-      var oViewModel = new JSONModel({
-          username: sUsername
-      });
-      this.getView().setModel(oViewModel, "viewModel");
-      //  Fetch the username from the model and set it to the view
-    // var oViewModel = this.getView().getModel("viewModel");
-    // if (oViewModel) {
-    //     oViewModel.setProperty("/username", sUsername);
-    // } else {
-    //     oViewModel = new JSONModel({
-    //         username: sUsername
-    //     });
-    //     this.getView().setModel(oViewModel, "viewModel");
-    // }
-  },
+    // onInit: function() {
+  //     var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+  //     oRouter.getRoute("RouteUser").attachMatched(this._onRouteMatched, this);
+  // },
+  // _onRouteMatched: function(oEvent) {
+  //     var {userID} = oEvent.getParameter("arguments");
+  //     var sUsername = oArgs.username;
+  //     var oViewModel = new JSONModel({
+  //         username: sUsername
+  //     });
+  //     this.getView().setModel(oViewModel, "viewModel");
+  //     //  Fetch the username from the model and set it to the view
+  //   // var oViewModel = this.getView().getModel("viewModel");
+  //   // if (oViewModel) {
+  //   //     oViewModel.setProperty("/username", sUsername);
+  //   // } else {
+  //   //     oViewModel = new JSONModel({
+  //   //         username: sUsername
+  //   //     });
+  //   //     this.getView().setModel(oViewModel, "viewModel");
+  //   // }
+  // },
+  onInit:function(){
+    const oRouter = this.getOwnerComponent().getRouter();
+    oRouter.attachRoutePatternMatched(this.onCurrentUserDetails, this);
+},
+onCurrentUserDetails: function (oEvent) {
+    const { userId } = oEvent.getParameter("arguments");
+    this.ID = userId;
+    const sRouterName = oEvent.getParameter("name");
+    const oForm = this.getView().byId("_IDGenPage1");
+    oForm.bindElement(`/User(${userId})`, {
+        expand: ''
+    });
+},
+
+
 
     onSearch: function(oEvent) {
       // Get the search query
@@ -53,6 +68,25 @@ sap.ui.define([
 
       // Apply the filters to the binding
       oBinding.filter(aFilters);
+    },
+    onPressUserProfile: function () {
+      this.loadProfileDialog().then(function (oDialog) {
+          oDialog.open();
+      });
+  },
+
+  loadProfileDialog: async function () {
+      if (!this.oDialogProfile) {
+          this.oDialogProfile = await this.loadFragment({
+              name: "com.app.centrallibrary.fragments.Userdetails"
+          });
+      }
+      return this.oDialogProfile;
+  },
+  onCloseProfileDialog: function () {
+    if (this.oDialogProfile) {
+        this.oDialogProfile.close();
     }
+},
   });
 });

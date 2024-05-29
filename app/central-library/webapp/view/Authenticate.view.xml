@@ -29,9 +29,7 @@
                         textAlign="Center"
                         class="title1"
                     />
-                    <!-- <HBox justifyContent="Center">
-                     <Image src="https://cdn.pixabay.com/photo/2012/04/01/18/22/user-23874_1280.png" width="40px" height="80px" />
-                     </HBox> -->
+
                     <Label id="_IDGenLabel2" />
                     <Title
                         id="title2"
@@ -103,15 +101,6 @@
                         alignItems="Stretch"
                         class="sapUiSmallMarginTop"
                     >
-                        <!-- <Button
-                            id="signUpButton"
-                            icon="sap-icon://add-employee"
-                            class="SignUp"
-                            text="Sign Up"
-                            type="Attention"
-                            width="100%"
-                            press="onBtnSignup"
-                        /> -->
                     </VBox>
                 </form:content>
             </form:SimpleForm>

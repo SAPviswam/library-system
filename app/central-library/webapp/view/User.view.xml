@@ -4,8 +4,9 @@
     controllerName="com.app.centrallibrary.controller.User">
     <Page id="_IDGenPage1" title="User Page">
         <headerContent>
+            <Text id="idrtyui" text="{username}"></Text>
             <Button id="_IDGenButton1" icon="sap-icon://bell" tooltip="Notifications" />
-            <Button id="_IDGenButton2" icon="sap-icon://customer" tooltip="User Profile" />
+            <Button id="_IDGenButton2" icon="sap-icon://customer" tooltip="User Profile" press="onPressUserProfile"/>
         </headerContent>
         <content>
             <VBox id="_IDGenVBox1">
