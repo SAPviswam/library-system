@@ -1,4 +1,3 @@
-
 {
   "_version": "1.59.0",
   "sap.app": {
@@ -111,28 +110,42 @@
       },
       "routes": [
         {
-          "name": "RouteAuthenticate",
+          "name": "RouteLibrary",
           "pattern": ":?query:",
-          "target": [
-            "TargetAuthenticate"
-          ]
+          "target": ["TargetLibrary"]
+        },
+        {
+          "name": "RouteAuthenticate",
+          "pattern": "Authenticate",
+          "target": ["TargetAuthenticate"]
         },
         {
           "name": "RouteUser",
           "pattern": "user:?query:",
-          "target": [
-            "TargetUser"
-          ]
+          "target": ["TargetUser"],
+          "greedy": false,
+          "transition": "slide"
         },
+      
         {
           "name": "RouteAdmin",
           "pattern": "admin:?query:",
-          "target": [
-            "TargetAdmin"
-          ]
+          "target": ["TargetAdmin"]
+        },
+        {
+          "name": "RouteSignup",
+          "pattern": "signup:?query:",
+          "target": ["TargetSignup"]
         }
       ],
       "targets": {
+        "TargetLibrary": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Library",
+          "viewName": "Library"
+        },
         "TargetAuthenticate": {
           "viewType": "XML",
           "transition": "slide",
@@ -153,6 +166,13 @@
           "clearControlAggregation": false,
           "viewId": "Admin",
           "viewName": "Admin"
+        },
+        "TargetSignup": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Signup",
+          "viewName": "Signup"
         }
       }
     },

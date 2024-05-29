@@ -1,0 +1,36 @@
+
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" controllerName="com.app.centrallibrary.controller.Signup">
+  <Page id="signupPage" title="Sign Up">
+  <content >
+      <VBox id="signform" justifyContent="Center" alignItems="Center" >
+        <form:SimpleForm class="signform" xmlns:form="sap.ui.layout.form" id="signupForm" layout="ResponsiveGridLayout" title="Account Creation" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1">
+          <form:content>
+          <Text id="signtext" text="User Details"></Text>
+            <!-- New Label and Select control for User Type -->
+            <Label id="userTypeLabel" text="User Type"/>
+            <Select id="userTypeInput" selectedKey="Main">
+              <core:Item id="signitem0" key="Main" text=""/>
+              <core:Item id="signitem2" key="User" text="User"/>
+            </Select>
+            <Label id="idLabel" text="ID"/>
+            <Input id="idInput" placeholder="Enter ID"/>
+
+            <Label id="emailLabel" text="Email"/>
+            <Input id="emailInput" placeholder="Enter Email"/>
+            
+            <Label id="passwordLabel" text="Password"/>
+            <Input id="passwordInput" placeholder="Enter Password" type="Password"/>
+
+            <Label id="confirmPasswordLabel" text="Confirm Password"/>
+            <Input id="confirmPasswordInput" placeholder="Confirm Password" type="Password"/>
+            <HBox id="signupBtn" justifyContent="SpaceAround">
+              <Button id="signupButton" type="Accept" text="Create" press="onSignUp"/>
+              <Button id="cancelButton" type="Reject" text="Cancel" press="onSignCancel"/> 
+            </HBox>
+            <Button id="clearButton" type="Emphasized" text="Clear" press="onSignClear"/>
+          </form:content>
+        </form:SimpleForm>
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>

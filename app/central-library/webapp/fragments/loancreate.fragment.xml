@@ -1,0 +1,90 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+>
+    <!--  -->
+    <Dialog
+        id="idNewLoanDialog"
+        resizable="true"
+        draggable="true"
+        contentWidth="30%"
+        title="Add New Loan"
+    >
+
+        <content>
+            <form:SimpleForm
+                id="idNewLoanFormToCreate"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+            >
+                <Label
+                    id="idNewLoanUserNameLabel"
+                    text="User Name"
+                />
+                <Input
+                    id="idNewLoanUserNameValue"
+                    value=""
+                />
+                <Label
+                    id="idNewLoanUserIDLabel"
+                    text="User ID"
+                />
+                <Input
+                    id="idNewLoanUserIDInput"
+                    value=""
+                />
+                <Label
+                    id="idNewLoanBookNameLabel"
+                    text="Book Title"
+                />
+                <Input
+                    id="idNewLoanBookNameInput"
+                    value=""
+                />
+                <Label
+                    id="idNewLoanDueDate"
+                    text="Due Date"
+                />
+                <Input
+                    id="idNewLoanDueDateInput"
+                    value=""
+                />
+            </form:SimpleForm>
+        </content>
+        <HBox
+            id="idNewLoanHboxCreate"
+            class="buttonsHbox"
+            justifyContent="SpaceAround"
+        >
+            <Button
+                class="buttons"
+                id="idNewLoanSaveButton"
+                text="Save"
+                press="onSaveNewLoan"
+                type="Success"
+                
+            />
+            <Button
+                class="buttons"
+                id="idNewLoanCancelButton"
+                text="Cancel"
+                press="onNewLoanDailogClose"
+                type="Negative"
+            />
+        </HBox>
+    </Dialog>
+</core:FragmentDefinition>

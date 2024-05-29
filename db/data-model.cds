@@ -17,6 +17,7 @@ entity User {
             Admin;
             User
         };
+        username : String;
         email    : String;
         password : String;
         loans    : Composition of many Loan
@@ -27,7 +28,7 @@ entity Loan {
     key ID        : UUID;
         issueDate : DateTime;
         dueDate   : DateTime;
-        status    : String;
+        status    : String enum {active;returned;overdue};
         user      : Association to User;
         book      : Association to Book;
 }

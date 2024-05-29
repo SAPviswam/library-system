@@ -1,0 +1,108 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form"
+>
+    <Dialog
+        id="idActiveLoansDailog"
+        resizable="true"
+        draggable="true"
+        contentWidth="85%"
+        contentHeight="85%"
+        title="Active Loans"
+    >
+        <content>
+            <Table
+                id="idLoanTable"
+                inset="false"
+                items="{/Loans}"
+                mode="MultiSelect"
+                multiSelectMode="SelectAll"
+            >
+                <headerToolbar>
+                    <Toolbar id="idToolBar">
+                        <Title
+                            id="idTableHeader"
+                            text="All Loans"
+                        />
+                        <ToolbarSpacer id="idSpacer" />
+                        <Button
+                            id="idAddButton"
+                            text="Add"
+                            press="onAddNewLoanPress"
+                        />
+                        <Button
+                            id="idCloseBTN"
+                            text="close"
+                            press="onCloseActiveLoans"
+                        />
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column id="idLoanTablecol1">
+                        <Text
+                            id="idUserName"
+                            text="Name"
+                        />
+                    </Column>
+                    <Column id="idLoanTablecol2">
+                        <Text
+                            id="idColUserID"
+                            text="User ID"
+                        />
+                    </Column>
+                    <Column id="idLoanTablecol3">
+                        <Text
+                            id="idBookName"
+                            text="BookName"
+                        />
+                    </Column>
+                    <Column id="idLoanTablecol4">
+                        <Text
+                            id="idDueDate"
+                            text="Due Date"
+                        />
+                    </Column>
+                    <Column id="idLoanTablecol5">
+                        <Text
+                            id="idClearLoanBTN"
+                            text="Clear Loan"
+                        />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="idLoanTableColListItems">
+                        <cells>
+                            <Text
+                                id="idLoanTableNameValue"
+                                text=""
+                            />
+                            <Text
+                                id="idLoanTableUserIdValue"
+                                text=""
+                            />
+                            <Text
+                                id="idLoanTableBookNameValue"
+                                text=""
+                            />
+                            <Text
+                                id="idLoanTableDueDateValue"
+                                text="{}"
+                            />
+                            <Button
+                                id="idClearLoanButton"
+                                icon="sap-icon://delete"
+                                tooltip="Delete Record"
+                                text="Close Loan"
+                                type="Negative"
+                                press="onClearLoan"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Dialog>
+    
+</core:FragmentDefinition>
+

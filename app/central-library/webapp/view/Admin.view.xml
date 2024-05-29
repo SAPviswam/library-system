@@ -2,25 +2,27 @@
     controllerName="com.app.centrallibrary.controller.Admin"
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
-    xmlns:m="sap.m"
+    xmlns:m="sap.m.Button"
     xmlns:f="sap.ui.layout.form"
     xmlns:l="sap.ui.layout"
-    xmlns:layout="sap.ui.layout">
-    
-    <m:VBox id="idAdminVBox" class="sapUiSmallMargin">
+    xmlns:layout="sap.ui.layout"
+    xmlns="sap.m">
+
+    <VBox id="idAdminVBox" class="sapUiSmallMargin">
         <!-- Toolbar with navigation and action buttons -->
-        <m:Toolbar id="idAdminToolbar">
-            <m:Button id="idNavButton" icon="sap-icon://nav-back" press="onPressback" />
-            <m:ToolbarSpacer id="_IDGenToolbarSpacer1" />
-            <m:Title id="idAdminPageTitle" text="Admin Page" />
-            <m:ToolbarSpacer id="_IDGenToolbarSpacer2" />
-            <m:Button id="idFullScreenButton" icon="sap-icon://full-screen" press="onPressFullScreen" />
-            <m:Button id="idNotificationButton" icon="sap-icon://bell" press="onPressNotification" />
-            <m:Button id="idProfileButton" icon="sap-icon://person-placeholder" press="onPressProfile" />
-        </m:Toolbar>
+        <Toolbar id="idAdminToolbar">
+            <Button id="idNavButton" icon="sap-icon://nav-back" press="onPressback" />
+            <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+            <Title id="idAdminPageTitle" text="Admin Page" />
+            <ToolbarSpacer id="_IDGenToolbarSpacer2" />
+            <Button id="idFullScreenButton" icon="sap-icon://full-screen" press="onPressFullScreen" />
+            <!-- <Button id="idNotificationButton" icon="sap-icon://bell" press="onPressNotification" /> -->
+            <Button id="idProfileButton" icon="sap-icon://person-placeholder" press="onPressProfile" />
+        </Toolbar>
 
         <!-- Admin Dashboard -->
         <f:SimpleForm
+            class="adminFormHeader"
             id="idAdminDashboardForm"
             editable="false"
             layout="ResponsiveGridLayout"
@@ -40,61 +42,63 @@
             singleContainerFullSize="false">
             
             <f:content>
-                <m:Label id="_IDGenLabel1" text="Total Books:" />
-                <m:Text id="idTotalBooksText" text="{/Book/$count}" />
-                <m:Label id="_IDGenLabel2" text="Active loans:" />
-                <m:Text id="idActiveLoansText" text="{/Loan/$count}" />
+                <Label id="_IDGenLabel1" text="Total Books" />
+                <Text id="idTotalBooksText" text="{}" />
+                <Label id="_IDGenLabel2" text="Active loans" />
+                <Text id="idActiveLoansText" text="{}" />
             </f:content>
         </f:SimpleForm>
 
         <!-- Book Details Table -->
-        <m:Title id="idBookDetailsTitle" text="Book Details" level="H2" />
-        <m:Table
+        <Table
             id="idBookTable"
             alternateRowColors="true"
             mode="MultiSelect"
             items="{/Book}"
             selectionChange="onSelectBook">
             
-            <m:headerToolbar>
-                <m:OverflowToolbar id="idBookTableToolbar">
-                    <m:Title id="idBooksTitle" text="Books" />
-                    <m:ToolbarSpacer id="_IDGenToolbarSpacer3" />
-                    <m:Button id="idAddButton" icon="sap-icon://add" press="onPressAdd" />
-                    <m:Button id="idDeleteButton" icon="sap-icon://delete" press="onPressDelete" />
-                    <m:Button id="idEditButton" icon="sap-icon://edit" press="onPressEdit" />
-                </m:OverflowToolbar>
-            </m:headerToolbar>
+            <headerToolbar>
+                <OverflowToolbar id="idBookTableToolbar">
+                    <Title id="idBooksTitle" text="Books Details" />
+                    <ToolbarSpacer id="_IDGenToolbarSpacer3" />
+                    <SearchField id="SearchField1" width="12rem" placeholder="Search" value="{/searchValue}" search="onSearch" />
+                    <Button id="idAddTitleButton" icon="sap-icon://add" press="onPressAdd" />
+                    <Button id="idDeleteButton" icon="sap-icon://delete" press="onPressDelete" />
+                    <Button id="idEditButton" icon="sap-icon://edit" press="onPressEdit" />
+                    <Button id="idActiveloansButton" text="Active Loans" type="Emphasized" press="onPressActiveloans"></Button>
+                    <Button id="idIssueButton" text="Issue title" type="Emphasized" press="onPressIssuetitle"></Button> 
+                </OverflowToolbar>
+            </headerToolbar>
 
-            <m:columns>
-                <m:Column id="_IDGenColumn1">
-                    <m:Text id="_IDGenText1" text="ISBN" />
-                </m:Column>
-                <m:Column id="_IDGenColumn2">
-                    <m:Text id="_IDGenText2" text="Title" />
-                </m:Column>
-                <m:Column id="_IDGenColumn3">
-                    <m:Text id="_IDGenText3" text="Author" />
-                </m:Column>
-                <m:Column id="_IDGenColumn4">
-                    <m:Text id="_IDGenText4" text="Quantity" />
-                </m:Column>
-                <m:Column id="_IDGenColumn5">
-                    <m:Text id="_IDGenText5" text="Genre" />
-                </m:Column>
-            </m:columns>
+            <columns>
+                <Column id="_IDGenColumn1">
+                    <Text id="_IDGenText1" text="ISBN" />
+                </Column>
+                <Column id="_IDGenColumn2">
+                    <Text id="_IDGenText2" text="Title" />
+                </Column>
+                <Column id="_IDGenColumn3">
+                    <Text id="_IDGenText3" text="Author" />
+                </Column>
+                <Column id="_IDGenColumn4">
+                    <Text id="_IDGenText4" text="Quantity" />
+                </Column>
+                <Column id="_IDGenColumn5">
+                    <Text id="_IDGenText5" text="Genre" />
+                </Column>
+            </columns>
             
-            <m:items>
-                <m:ColumnListItem id="_IDGenColumnListItem1">
-                    <m:cells>
-                        <m:Text id="_IDGenText6" text="{ISBN}" />
-                        <m:Text id="_IDGenText7" text="{title}" />
-                        <m:Text id="_IDGenText8" text="{author}" />
-                        <m:Text id="_IDGenText9" text="{quantity}" />
-                        <m:Text id="_IDGenText10" text="{genre}" />
-                    </m:cells>
-                </m:ColumnListItem>
-            </m:items>
-        </m:Table>
-    </m:VBox>
+            <items>
+                <ColumnListItem id="_IDGenColumnListItem1">
+                    <cells>
+                        <Text id="_IDGenText6" text="{ISBN}" />
+                        <Text id="_IDGenText7" text="{title}" />
+                        <Text id="_IDGenText8" text="{author}" />
+                        <Text id="_IDGenText9" text="{quantity}" />
+                        <Text id="_IDGenText10" text="{genre}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </VBox>
 </mvc:View>

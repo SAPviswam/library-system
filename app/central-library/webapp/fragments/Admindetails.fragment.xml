@@ -1,0 +1,45 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+    <Dialog
+        id="idProfileDialog"
+        contentWidth="30%"
+        contentHeight="20%"
+        resizable="true"
+        draggable="true"
+    >
+        <customHeader>
+            <Bar>
+            <contentLeft>
+                    <Button
+                        icon="sap-icon://nav-back"
+                        press="onCloseProfileDialog"
+                        type="Transparent"
+                    />
+                </contentLeft>
+                <contentMiddle>
+                    <Title text="Admin Details"/>
+                </contentMiddle>
+                
+            </Bar>
+        </customHeader>
+        <content >
+            <VBox>
+                <HBox>
+                    <Label text="ID:" class="admindetailstxt"/>
+                    <Text text="******" />
+                </HBox>
+                <HBox>
+                    <Label text="Role:" class="admindetailstxt"/>
+                    <Text text="******" />
+                </HBox>
+                <HBox>
+                    <Label text="Username:" class="admindetailstxt"/>
+                    <Text text="******" />
+                </HBox>
+                <HBox>
+                    <Label text="Email:" class="admindetailstxt"/>
+                    <Text text="******" />
+                </HBox>
+            </VBox>
+        </content>
+    </Dialog>
+</core:FragmentDefinition>

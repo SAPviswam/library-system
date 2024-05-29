@@ -1,4 +1,8 @@
 /* Enter your custom styles here */
+.signform{
+    margin-top: 150px;
+}
+
 .fullscreen {
     position: fixed;
     top: 0;
@@ -9,4 +13,37 @@
     height: 100%;
     z-index: 1000;
     background-color: white; /* or any other background color */
+}
+
+.title1{
+    font-size: large;
+    justify-content: center;
+}
+
+.form{
+    margin-top: 200px;
+}
+
+.customBarBackground {
+    background-color: bisque; 
+}
+
+/* Library page CSS Part */
+
+.libpage{
+    background-image: url("https://purepng.com/public/uploads/large/bundle-of-books-r6w.png");
+    background-size: 50% 50%; 
+    background-repeat: no-repeat; 
+    /* background-position: center;  */
+    background-position: center 80%;
+
+}
+.aboutlibrary{
+margin-top: 40px;
+margin-left: 20px;
+justify-content: baseline;
+}
+
+.admindetailstxt{
+    margin-left: 20px;
 }
