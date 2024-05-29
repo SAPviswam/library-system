@@ -24,16 +24,16 @@
             <layout:SimpleForm id="UserDetailsform">
                 <layout:content>
                     <Label id="UserDetailsID" text="ID"/>
-                    <Text id="UserDetailsIDtxt" text="{}" />
+                    <Text id="UserDetailsIDtxt" text="{ID}" />
                     
                     <Label id="UserDetailsname" text="User Name"/>
-                    <Text id="UserDetailsnametxt" text="{}" />
+                    <Text id="UserDetailsnametxt" text="{username}" />
                     <Label id="UserDetailsemail" text="Email"/>
-                    <Text id="UserDetailsemailtxt" text="{}" />
+                    <Text id="UserDetailsemailtxt" text="{email}" />
                 </layout:content>
             </layout:SimpleForm>
         </content>
-<Table id="UserDetailsTable" inset="false" items="{}" >
+<Table id="UserDetailsTable" inset="false" items="{/Book}" >
     <columns>
         <Column id="UserdetailsColumn1">
             <Text id="UserdetailsText2" text="ISBN" />
@@ -51,8 +51,8 @@
     <items>
         <ColumnListItem id="UserdetailsColumnListItem1">
             <cells>
-                <Text id="UserdetailsText7" text="{}" />
-                <Text id="UserdetailsText8" text="{}" />
+                <Text id="UserdetailsText7" text="{ISBN}" />
+                <Text id="UserdetailsText8" text="{title}" />
                 <Text id="UserdetailsText9" text="{}" />
                 <Text id="UserdetailsText10" text="{}" />
             </cells>

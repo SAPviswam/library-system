@@ -5,7 +5,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (BaseController) {
     onInit: function () {},
     onSignCancel: function () {
       var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-      // navigate to RouteAuthenticate
       oRouter.navTo("RouteLibrary");
     },
     onSignClear: function () {

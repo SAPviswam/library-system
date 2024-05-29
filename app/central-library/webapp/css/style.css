@@ -47,3 +47,9 @@ justify-content: baseline;
 .admindetailstxt{
     margin-left: 20px;
 }
+
+.borrowedbooktext{
+    margin-left: 200px;
+    color: black;
+    font-size: larger;
+}

@@ -11,17 +11,21 @@ sap.ui.define([
     "use strict";
 
     return Controller.extend("com.app.centrallibrary.controller.Admin", {
-        onInit: function () {
-            var oBookModel = new JSONModel({
-                Book: [],
-                searchValue: ""
-            });
-            this.getView().setModel(oBookModel, "bookModel");
+        // onInit: function () {
+        //     var oBookModel = new JSONModel({
+        //         Book: [],
+        //         searchValue: ""
+        //     });
+        //     this.getView().setModel(oBookModel, "bookModel");
 
-            this._loadCSVData();
+        //     this._loadCSVData();
+        //     const oRouter = this.getOwnerComponent().getRouter();
+        //     oRouter.attachRoutePatternMatched(this.onCurrentUserDetails, this);
+        // },
+        onInit: function () {
             const oRouter = this.getOwnerComponent().getRouter();
             oRouter.attachRoutePatternMatched(this.onCurrentUserDetails, this);
-        },
+          },
         onCurrentUserDetails: function (oEvent) {
             debugger
             const { userId } = oEvent.getParameter("arguments");
@@ -74,10 +78,24 @@ sap.ui.define([
             // Handle notification button press
         },
 
-        onPressProfile: function () {
-            // Handle profile button press
+        onPressAdmin: function () {
+            this.loadProfileDialog().then(function (oDialog) {
+                // Bind user data to dialog
+                var oViewModel = this.getView().getModel();
+                oDialog.setModel(oViewModel);
+                oDialog.bindElement(`/User(${this.ID})`); // Assuming ID is the user ID stored in the controller
+                oDialog.open();
+            }.bind(this));
         },
 
+        loadProfileDialog: async function () {
+            if (!this.oDialogProfile) {
+              this.oDialogProfile = await this.loadFragment({
+                name: "com.app.centrallibrary.fragments.Admindetails"
+              });
+            }
+            return this.oDialogProfile;
+          },
         async onPressAdd(){
             this.oDialogAdd ??= await this.loadFragment({
                 name: "com.app.centrallibrary.fragments.Adddata"
@@ -108,6 +126,7 @@ sap.ui.define([
             // new v4
             var oContext = this.getView().byId("idBookTable").getBinding("items")
                 .create(oNewBook);
+                sap.m.MessageToast.show(" Successfully Added");
             // Close the dialog
             this.oDialogAdd.close();
         },
@@ -134,25 +153,56 @@ sap.ui.define([
             }
         },
 
-        onPressEdit: function () {
-            // Handle edit button press
+        onPressEdit: async function () {
+            var oSelected = this.byId("idBookTable").getSelectedItem();
+            if (oSelected) {
+                var oContext = oSelected.getBindingContext("bookModel");
+                if (!this.oEditDialog) {
+                    this.oEditDialog = await Fragment.load({
+                        id: this.getView().getId(),
+                        name: "com.app.centrallibrary.fragments.EditBook",
+                        controller: this
+                    });
+                    this.getView().addDependent(this.oEditDialog);
+                }
+                this.oEditDialog.setBindingContext(oContext, "bookModel");
+                this.oEditDialog.open();
+            } else {
+                MessageToast.show("Please select a book to edit.");
+            }
+        },
+
+        onModifyBook: function () {
+            var oModel = this.getView().getModel("bookModel");
+            var oDialog = this.byId("editBookDialog");
+            var oContext = oDialog.getBindingContext("bookModel");
+
+            oModel.refresh();
+            MessageToast.show("Book details updated successfully.");
+            oDialog.close();
+        },
+        
+        onCancelEdit: function () {
+            if (this.oEditDialog.isOpen()) {
+                this.oEditDialog.close();
+            }
         },
 
         onSearch: function (oEvent) {
             // Get the search value
             var sQuery = oEvent.getParameter("query");
-            if (!sQuery) {
-                sQuery = this.getView().getModel("bookModel").getProperty("/searchValue");
-            }
-
+            // if (!sQuery) {
+            //     sQuery = this.getView().getModel("bookModel").getProperty("/searchValue");
+            // }
             // Create a filter for each searchable field
             var aFilters = [];
-            if (sQuery && sQuery.length > 0) {
-                var oFilter1 = new Filter("title", FilterOperator.Contains, sQuery);
-                var oFilter2 = new Filter("author", FilterOperator.Contains, sQuery);
-                var oFilter3 = new Filter("genre", FilterOperator.Contains, sQuery);
-                aFilters.push(new Filter({
-                    filters: [oFilter1, oFilter2, oFilter3],
+            if (sQuery) {
+                aFilters.push(new sap.ui.model.Filter({
+                    filters: [
+                        new sap.ui.model.Filter("title", sap.ui.model.FilterOperator.Contains, sQuery),
+                        new sap.ui.model.Filter("author", sap.ui.model.FilterOperator.Contains, sQuery),
+                        new sap.ui.model.Filter("genre", sap.ui.model.FilterOperator.Contains, sQuery)
+                      ],
                     and: false
                 }));
             }
@@ -162,6 +212,29 @@ sap.ui.define([
             var oBinding = oTable.getBinding("items");
             oBinding.filter(aFilters, "Application");
         },
+
+        onSearch: function (oEvent) {
+            // Get the search query
+            var sQuery = oEvent.getParameter("query");
+            var aFilters = [];
+            if (sQuery) {
+              aFilters.push(new sap.ui.model.Filter({
+                filters: [
+                  new sap.ui.model.Filter("title", sap.ui.model.FilterOperator.Contains, sQuery),
+                  new sap.ui.model.Filter("author", sap.ui.model.FilterOperator.Contains, sQuery),
+                  new sap.ui.model.Filter("genre", sap.ui.model.FilterOperator.Contains, sQuery)
+                ],
+                and: false
+              }));
+            }
+      
+            // Get the table and binding
+            var oTable = this.byId("idBookTable");
+            var oBinding = oTable.getBinding("items");
+      
+            // Apply the filters to the binding
+            oBinding.filter(aFilters);
+          },
 
         async onPressActiveloans(){
             this.oDialogLoan ??= await this.loadFragment({
@@ -177,13 +250,17 @@ sap.ui.define([
                 this.oDialogLoan.close();
             }
 
+
         },
-        onPressProfile: function () {
+        onPressAdminProfile: function () {
             this.loadProfileDialog().then(function (oDialog) {
                 oDialog.open();
-            });
-        },
-
+            var oViewModel = this.getView().getModel();
+        oDialog.setModel(oViewModel);
+        oDialog.bindElement(`/User(${this.ID})`);
+        oDialog.open();
+      }.bind(this));
+    },
         loadProfileDialog: async function () {
             if (!this.oDialogProfile) {
                 this.oDialogProfile = await this.loadFragment({
@@ -213,6 +290,13 @@ sap.ui.define([
                 this.oNewLoanDailog.close();
             }
         },
+       
     });
 });
+
+
+
+
+
+
 

@@ -25,25 +25,24 @@
             <VBox>
                 <HBox>
                     <Label text="ID:" class="admindetailstxt"/>
-                    <Text text="{}" />
+                    <Text text="{ID}" />
                 </HBox>
                 <HBox>
                     <Label text="Role:" class="admindetailstxt"/>
-                    <Text text="{}" />
+                    <Text text="{username}" />
                 </HBox>
                 <HBox>
                     <Label text="Username:" class="admindetailstxt"/>
-                    <Text text="{}" />
+                    <Text text="{email}" />
                 </HBox>
                 <HBox>
                     <Label text="Email:" class="admindetailstxt"/>
-                    <Text text="{}" />
+                    <Text text="{role}" />
                 </HBox>
             </VBox>
         </content>
     </Dialog>
 </core:FragmentDefinition>
-
 
 
 

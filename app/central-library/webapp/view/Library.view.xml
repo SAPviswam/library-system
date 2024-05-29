@@ -5,6 +5,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:tnt="sap.tnt"
+    xmlns:html="http://www.w3.org/1999/xhtml"
     displayBlock="true"
 >
     <Page
@@ -12,6 +13,9 @@
         showHeader="false"
         class="libpage"
     >
+
+
+
         <ScrollContainer
             id="scrollContainer"
             vertical="true"
@@ -52,6 +56,9 @@
                 />
             </tnt:ToolHeader>
 
+    <html:marquee behavior="scroll" direction="left" scrollamount="5">
+        Welcome to the Central Library. Have a nice day!😊
+    </html:marquee>
             <HBox id="_IDlibHBox1">
                 <HBox id="_IDlibHBox2">
                     <Text id="_IDlibText1"

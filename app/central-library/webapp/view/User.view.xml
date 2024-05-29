@@ -4,15 +4,14 @@
     controllerName="com.app.centrallibrary.controller.User">
     <Page id="_IDGenPage1" title="User Page">
         <headerContent>
-            <Text id="idrtyui" text="{username}"></Text>
             <Button id="_IDGenButton1" icon="sap-icon://bell" tooltip="Notifications" />
             <Button id="_IDGenButton2" icon="sap-icon://customer" tooltip="User Profile" press="onPressUserProfile"/>
         </headerContent>
         <content>
             <VBox id="_IDGenVBox1">
-                <Text id="rowGap1" text="" />
+
                 <Title id="_IDGenTitle1" text=" Dashboard" level="H2" />
-                <Text id="_IDGenText1" text="Borrowed Books:" />
+                <Text id="_IDGenText1" text="Borrowed Books:" class="borrowedbooktext"/>
                 <Text id="rowGap2" text="" />
                 <Text id="rowGap3" text="" />
                 <Table id="bookDetailsTable" inset="false" items="{/Book}" mode="MultiSelect">
@@ -21,7 +20,7 @@
                             <Title id="_IDGenTitle2" text="Book Details" />
                             <ToolbarSpacer id="_IDGenToolbarSpacer1" />
                             <SearchField id="_IDGenSearchField1" width="12rem" placeholder="Search" value="{/searchValue}" search="onSearch" />
-                            <Button id="_IDGenButton3" icon="sap-icon://add" tooltip="Add Book" press="onAddBook" />
+                            <Button id="_IDGenButton3" icon="sap-icon://add" tooltip="Add Book" press="onReserveBook" />
                         </Toolbar>
                     </headerToolbar>
                     <columns>
@@ -37,6 +36,9 @@
                         <Column id="_IDGenColumn4">
                             <Text id="_IDGenText5" text="Quantity" />
                         </Column>
+                        <Column id="_IDGenColumn05">
+                            <Text id="_IDGenText05" text="Available Quantity" />
+                        </Column>
                         <Column id="_IDGenColumn5">
                             <Text id="_IDGenText6" text="Genre" />
                         </Column>
@@ -48,7 +50,8 @@
                                 <Text id="_IDGenText8" text="{title}" />
                                 <Text id="_IDGenText9" text="{author}" />
                                 <Text id="_IDGenText10" text="{quantity}" />
-                                <Text id="_IDGenText11" text="{genre}" />
+                                <Text id="_IDGenText11" text="{availableQuantity}" />
+                                <Text id="_IDGenText12" text="{genre}" />
                             </cells>
                         </ColumnListItem>
                     </items>
