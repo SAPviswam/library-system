@@ -4,8 +4,8 @@ entity Book {
     key ISBN              : UUID;
         title             : String;
         author            : String;
-        quantity          : Integer;
-        availableQuantity : Integer;
+        quantity          : String;
+        availableQuantity : String;
         genre             : String;
         loans             : Composition of many Loan
                                 on loans.book = $self;

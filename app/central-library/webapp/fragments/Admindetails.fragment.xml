@@ -22,7 +22,8 @@
             </Bar>
         </customHeader>
         <content >
-            <VBox>
+            <VBox class="idAdminDetils">
+
                 <HBox>
                     <Label text="ID:" class="admindetailstxt"/>
                     <Text text="{ID}" />

@@ -3,15 +3,17 @@
         <content>
             <VBox>
                 <Label text="ISBN" />
-                <Input id="editISBNInput" value="{bookModel>ISBN}" enabled="true" />
+                <Input id="editISBNInput" value="{oEditModel>/ISBN}" enabled="true" />
                 <Label text="Title" />
-                <Input id="editTitleInput" value="{bookModel>title}" />
+                <Input id="editTitleInput" value="{oEditModel>/title}" />
                 <Label text="Author" />
-                <Input id="editAuthorInput" value="{bookModel>author}" />
+                <Input id="editAuthorInput" value="{oEditModel>/author}" />
                 <Label text="Quantity" />
-                <Input id="editQuantityInput" value="{}" />
+                <Input id="editQuantityInput" value="{oEditModel>/quantity}" />
                 <Label text="Genre" />
-                <Input id="editGenreInput" value="{}" />
+                <Input id="editGenreInput" value="{oEditModel>/genre}" />
+                <Label text="Available Quantity" />
+                <Input id="editAvailableInput" value="{oEditModel>/availableQuantity}" />
             </VBox>
         </content>
         <beginButton>

@@ -1,0 +1,66 @@
+
+
+
+<core:FragmentDefinition xmlns:table="sap.ui.table" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:layout="sap.ui.layout.form">
+  <Dialog
+      id="idActiveLoansDialog"
+      title="Active Loans"
+      class="sapUiResponsivePadding">
+      <customHeader>
+            <Bar id="Issutitleheader">
+            <contentLeft>
+                <Title id="issueTitleHeader" text="Issue Title" />
+                </contentLeft>
+                <contentRight>
+                <Button id="Issuetitlebtn" text="Issue Title" press="onIssuetitle" type="Emphasized" />
+                <Button id="Issuetitleclosebtn" text="Close" press="onCloseIssuetitle" type="Emphasized"/>
+                </contentRight>
+            </Bar>
+        </customHeader>
+      
+      <content>
+          <table:Table
+              id="idActiveLoansTable"
+              rows="{
+                  path: '',
+                  filters: [
+                      {  }
+                  ]
+              }">
+              <table:columns>
+                  <table:Column>
+                      <Label text="User Id" />
+                      <table:template>
+                          <Text text="{}" />
+                      </table:template>
+                  </table:Column>
+                  <table:Column>
+                      <Label text="User Name" />
+                      <table:template>
+                          <Text text="{}" />
+                      </table:template>
+                  </table:Column>
+                  <table:Column>
+                      <Label text="ISBN" />
+                      <table:template>
+                          <Text text="{}" />
+                      </table:template>
+                  </table:Column>
+                  <table:Column>
+                      <Label text="Borrowed Date" />
+                      <table:template>
+                          <Text text="{}" />
+                      </table:template>
+                  </table:Column>
+                  <table:Column>
+                      <Label text="Due Date" />
+                      <table:template>
+                          <Text text="{}" />
+                      </table:template>
+                  </table:Column>
+              </table:columns>
+          </table:Table>
+      </content>
+
+  </Dialog>
+</core:FragmentDefinition>

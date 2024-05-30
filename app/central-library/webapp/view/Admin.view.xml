@@ -43,7 +43,7 @@
             singleContainerFullSize="false">
             
             <f:content>
-                <Label id="_IDGenLabel1" text="Total Books" />
+                <Label id="_IDGenLabel1" text="Total Titles Quantity" />
                 <Text id="idTotalBooksText" text="{}" />
                 <Label id="_IDGenLabel2" text="Active loans" />
                 <Text id="idActiveLoansText" text="{}" />
@@ -55,12 +55,12 @@
             id="idBookTable"
             alternateRowColors="true"
             mode="MultiSelect"
-            items="{/Book}"
+            items="{path:'/Book', parameters:{ $count:true}}"
             >
             
             <headerToolbar>
                 <OverflowToolbar id="idBookTableToolbar">
-                    <Title id="idBooksTitle" text="Books Details" />
+                    <Title id="idBooksTitle" text="Total Titles:- {/Book/$count}" />
                     <ToolbarSpacer id="_IDGenToolbarSpacer3" />
                     <SearchField id="SearchField1" width="12rem" placeholder="Search" value="{/searchValue}" search="onSearch" />
                     <Button id="idAddTitleButton" icon="sap-icon://add" press="onPressAdd" />

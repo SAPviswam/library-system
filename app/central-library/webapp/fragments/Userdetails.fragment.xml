@@ -33,6 +33,7 @@
                 </layout:content>
             </layout:SimpleForm>
         </content>
+        <Title id="iduserborrowedbooks" text="Borrowed Books"></Title>
 <Table id="UserDetailsTable" inset="false" items="{/Book}" >
     <columns>
         <Column id="UserdetailsColumn1">
@@ -51,8 +52,8 @@
     <items>
         <ColumnListItem id="UserdetailsColumnListItem1">
             <cells>
-                <Text id="UserdetailsText7" text="{ISBN}" />
-                <Text id="UserdetailsText8" text="{title}" />
+                <Text id="UserdetailsText7" text="{}" />
+                <Text id="UserdetailsText8" text="{}" />
                 <Text id="UserdetailsText9" text="{}" />
                 <Text id="UserdetailsText10" text="{}" />
             </cells>

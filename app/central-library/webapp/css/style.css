@@ -49,7 +49,14 @@ justify-content: baseline;
 }
 
 .borrowedbooktext{
-    margin-left: 200px;
+    /* margin-left: 200px; */
     color: black;
-    font-size: larger;
+    /* font-size: larger; */
+}
+
+.iduserborrowedbooks{
+    font-size: x-large;
+}
+.idAdminDetils{
+   margin-top: 20px; 
 }

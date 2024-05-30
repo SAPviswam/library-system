@@ -23,6 +23,15 @@ sap.ui.define([
         //     oRouter.attachRoutePatternMatched(this.onCurrentUserDetails, this);
         // },
         onInit: function () {
+            var oEditModel = new JSONModel({
+                ISBN:"",
+                title:"",
+                author:"",
+                quantity:"",
+                availableQuantity:"",
+                genre:""
+            })
+            this.getView().setModel(oEditModel,"oEditModel")
             const oRouter = this.getOwnerComponent().getRouter();
             oRouter.attachRoutePatternMatched(this.onCurrentUserDetails, this);
           },
@@ -104,32 +113,77 @@ sap.ui.define([
             this.oDialogAdd.open();
         },
 
+        // onAddNewBook: function () {
+        //     var oView = this.getView();
+
+        //     // Capture the input values
+        //     var sISBN = oView.byId("ISBNInput").getValue();
+        //     var sTitle = oView.byId("BookInput").getValue();
+        //     var sAuthor = oView.byId("AuthorInput").getValue();
+        //     var sQuantity = oView.byId("quantityInput").getValue();
+        //     var sGenre = oView.byId("genreInput").getValue();
+
+        //     // // Create a new book object
+        //     var oNewBook = {
+        //         ISBN: sISBN,
+        //         title: sTitle,
+        //         author: sAuthor,
+        //         quantity: sQuantity,
+        //         genre: sGenre
+        //     };
+
+        //     // new v4
+        //     var oContext = this.getView().byId("idBookTable").getBinding("items")
+        //         .create(oNewBook);
+        //         sap.m.MessageToast.show(" Successfully Added");
+        //     // Close the dialog
+        //     this.oDialogAdd.close();
+        // },
+
         onAddNewBook: function () {
             var oView = this.getView();
-
+        
             // Capture the input values
             var sISBN = oView.byId("ISBNInput").getValue();
             var sTitle = oView.byId("BookInput").getValue();
             var sAuthor = oView.byId("AuthorInput").getValue();
             var sQuantity = oView.byId("quantityInput").getValue();
             var sGenre = oView.byId("genreInput").getValue();
-
-            // // Create a new book object
+        
+            // Validate the input values
+            if (!sISBN || !sTitle || !sAuthor || !sQuantity || !sGenre) {
+                // Show a message if any input value is empty
+                sap.m.MessageToast.show("Please fill all the input values.");
+                return; // Exit the function if validation fails
+            }
+            // Set available quantity equal to quantity
+            var sAvailableQuantity = sQuantity;
+        
+            // Create a new book object
             var oNewBook = {
                 ISBN: sISBN,
                 title: sTitle,
                 author: sAuthor,
                 quantity: sQuantity,
+                availableQuantity: sAvailableQuantity,
                 genre: sGenre
             };
-
-            // new v4
-            var oContext = this.getView().byId("idBookTable").getBinding("items")
-                .create(oNewBook);
-                sap.m.MessageToast.show(" Successfully Added");
+        
+            // Create a new entry in the model
+            var oContext = this.getView().byId("idBookTable").getBinding("items").create(oNewBook);
+            sap.m.MessageToast.show("Successfully Added");
+            
+            // Clear input fields
+            oView.byId("ISBNInput").setValue("");
+            oView.byId("BookInput").setValue("");
+            oView.byId("AuthorInput").setValue("");
+            oView.byId("quantityInput").setValue("");
+            oView.byId("genreInput").setValue("");
+            
             // Close the dialog
             this.oDialogAdd.close();
         },
+        
 
         onCancel: function(){
             this.oDialogAdd.close();
@@ -154,25 +208,56 @@ sap.ui.define([
         },
 
         onPressEdit: async function () {
-            var oSelected = this.byId("idBookTable").getSelectedItem();
-            if (oSelected) {
-                var oContext = oSelected.getBindingContext("bookModel");
-                if (!this.oEditDialog) {
-                    this.oEditDialog = await Fragment.load({
-                        id: this.getView().getId(),
-                        name: "com.app.centrallibrary.fragments.EditBook",
-                        controller: this
-                    });
-                    this.getView().addDependent(this.oEditDialog);
+            debugger
+            // var oSelected = this.byId("idBookTable").getSelectedItem();
+            var selected = this.byId("idBookTable").getSelectedItem(),
+            oISBN = selected.getBindingContext().getObject().ISBN,
+            otitle = selected.getBindingContext().getObject().title,
+            oauthor = selected.getBindingContext().getObject().author,
+            oquantity = selected.getBindingContext().getObject().quantity,
+            oavailableQuantity = selected.getBindingContext().getObject().availableQuantity,
+            ogenre = selected.getBindingContext().getObject().genre
+            
+            var oEditModel = new JSONModel({
+                ISBN:oISBN,
+                title:otitle,
+                author:oauthor,
+                quantity:oquantity,
+                availableQuantity:oavailableQuantity,
+                genre:ogenre
+            })
+            this.getView().setModel(oEditModel,"oEditModel")
+            if (!this.oEditDialog) {
+                        this.oEditDialog = await Fragment.load({
+                            id: this.getView().getId(),
+                            name: "com.app.centrallibrary.fragments.EditBook",
+                            controller: this
+                        });
+                        this.getView().addDependent(this.oEditDialog);
+                        this.oEditDialog.open();
+                    }                    
+                else {
+                    MessageToast.show("Please select a book to edit.");
                 }
-                this.oEditDialog.setBindingContext(oContext, "bookModel");
-                this.oEditDialog.open();
-            } else {
-                MessageToast.show("Please select a book to edit.");
-            }
-        },
+            },
 
+            // if (oSelected) {
+            //     var oContext = oSelected.getBindingContext("bookModel");
+            //     if (!this.oEditDialog) {
+            //         this.oEditDialog = await Fragment.load({
+            //             id: this.getView().getId(),
+            //             name: "com.app.centrallibrary.fragments.EditBook",
+            //             controller: this
+            //         });
+            //         this.getView().addDependent(this.oEditDialog);
+            //     }
+            //     this.oEditDialog.setBindingContext(oContext, "bookModel");
+            //     this.oEditDialog.open();
+            // } else {
+            //     MessageToast.show("Please select a book to edit.");
+            // }
         onModifyBook: function () {
+            
             var oModel = this.getView().getModel("bookModel");
             var oDialog = this.byId("editBookDialog");
             var oContext = oDialog.getBindingContext("bookModel");
@@ -247,6 +332,7 @@ sap.ui.define([
         onCloseActiveLoans: function () {
             debugger
             if (this.oDialogLoan.isOpen()) {
+
                 this.oDialogLoan.close();
             }
 
@@ -290,7 +376,23 @@ sap.ui.define([
                 this.oNewLoanDailog.close();
             }
         },
-       
+        async onPressIssuetitle() {
+            if (!this.oPageIssuetitle) {
+                this.oPageIssuetitle = await this.loadFragment({
+                    name: "com.app.centrallibrary.fragments.Issuetitle"
+                });
+                this.getView().addDependent(this.oPageIssuetitle);
+            }
+
+            this.oPageIssuetitle.open();
+        },
+        
+        onCloseIssuetitle: function () {
+            if (this.oPageIssuetitle.isOpen()) {
+                this.oPageIssuetitle.close();
+            }
+        },
+
     });
 });
 
