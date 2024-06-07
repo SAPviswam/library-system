@@ -1,16 +1,16 @@
-ISBN,title,author,quantity,availableQuantity,genre
-1e68a7b5-5c3c-4e73-9c2e-0db6cdd4a0a1,The Great Gatsby,F. Scott Fitzgerald,10,5,Fiction
-2e68a7b5-5c3c-4e73-9c2e-0db6cdd4a0a2,1984,George Orwell,8,3,Dystopian
-3e68a7b5-5c3c-4e73-9c2e-0db6cdd4a0a3,To Kill a Mockingbird,Harper Lee,12,7,Classic
-4e68a7b5-5c3c-4e73-9c2e-0db6cdd4a0a4,Pride and Prejudice,Jane Austen,9,4,Romance
-5e68a7b5-5c3c-4e73-9c2e-0db6cdd4a0a5,Moby Dick,Herman Melville,6,2,Adventure
-6e68a7b5-5c3c-4e73-9c2e-0db6cdd4a0a6,War and Peace,Leo Tolstoy,7,3,Historical
-7e68a7b5-5c3c-4e73-9c2e-0db6cdd4a0a7,The Catcher in the Rye,J.D. Salinger,11,6,Fiction
-8e68a7b5-5c3c-4e73-9c2e-0db6cdd4a0a8,The Hobbit,J.R.R. Tolkien,14,8,Fantasy
-9e68a7b5-5c3c-4e73-9c2e-0db6cdd4a0a9,Crime and Punishment,Fyodor Dostoevsky,10,5,Philosophical
-ae68a7b5-5c3c-4e73-9c2e-0db6cdd4a0a0,Brave New World,Aldous Huxley,8,4,Dystopian
-be68a7b5-5c3c-4e73-9c2e-0db6cdd4a0b1,Jane Eyre,Charlotte Bronte,12,6,Romance
-ce68a7b5-5c3c-4e73-9c2e-0db6cdd4a0b2,The Odyssey,Homer,15,10,Classic
-de68a7b5-5c3c-4e73-9c2e-0db6cdd4a0b3,Ulysses,James Joyce,5,2,Modernist
-ee68a7b5-5c3c-4e73-9c2e-0db6cdd4a0b4,The Divine Comedy,Dante Alighieri,7,4,Poetry
-fe68a7b5-5c3c-4e73-9c2e-0db6cdd4a0b5,The Brothers Karamazov,Fyodor Dostoevsky,6,3,Philosophical
+ID,ISBN,title,author,quantity,availableQuantity,genre
+a04fe7d6-2365-11ef-ae19-325096b39f47,978-3-8080-8575-2,The Great Gatsby,F. Scott Fitzgerald,10,5,Fiction
+a04feb14-2365-11ef-87c0-325096b39f47,978-9-4324-7591-4,1984,George Orwell,8,3,Dystopian
+a04febbe-2365-11ef-8978-325096b39f47,978-3-3967-9617-7,To Kill a Mockingbird,Harper Lee,12,7,Classic
+a04fec40-2365-11ef-901b-325096b39f47,978-3-7334-9328-8,Pride and Prejudice,Jane Austen,9,4,Romance
+a04fecae-2365-11ef-b512-325096b39f47,978-0-8151-7591-9,Moby Dick,Herman Melville,6,2,Adventure
+a04fed1c-2365-11ef-b7ac-325096b39f47,978-3-0432-1732-1,War and Peace,Leo Tolstoy,7,3,Historical
+a04fed8a-2365-11ef-9307-325096b39f47,978-3-4994-3019-0,The Catcher in the Rye,J.D. Salinger,11,6,Fiction
+a04fedf8-2365-11ef-bc03-325096b39f47,978-9-8790-8521-9,The Hobbit,J.R.R. Tolkien,14,8,Fantasy
+a04fee5c-2365-11ef-b65d-325096b39f47,978-5-2165-5770-8,Crime and Punishment,Fyodor Dostoevsky,10,5,Philosophical
+a04feeca-2365-11ef-8251-325096b39f47,978-8-4257-4436-5,Brave New World,Aldous Huxley,8,4,Dystopian
+b27ede1c-2365-11ef-828b-325096b39f47,978-8-9154-1543-0,Jane Eyre,Charlotte Bronte,12,6,Romance
+b27ee8f8-2365-11ef-8dde-325096b39f47,978-9-1224-7109-7,The Odyssey,Homer,15,10,Classic
+b27ee9ac-2365-11ef-9f59-325096b39f47,978-0-1961-1793-5,Ulysses,James Joyce,5,2,Modernist
+b27eea24-2365-11ef-86e8-325096b39f47,978-0-6841-5404-6,The Divine Comedy,Dante Alighieri,7,4,Poetry
+b27eea88-2365-11ef-bc21-325096b39f47,978-9-4950-1683-3,The Brothers Karamazov,Fyodor Dostoevsky,6,3,Philosophical

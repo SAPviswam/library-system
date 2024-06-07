@@ -1,65 +1,66 @@
-<core:FragmentDefinition xmlns:table="sap.ui.table" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:layout="sap.ui.layout.form">
-    <Dialog
-        id="idProfileDialog"
-        contentWidth="60%"
-        contentHeight="100%"
-        resizable="true"
-        draggable="true"
-    >
-        <customHeader>
-            <Bar id="UserDetailsheader">
-                <contentLeft>
-                    <Button id="UserDetailsnavbackbtn"
-                        icon="sap-icon://nav-back"
-                        press="onCloseProfileDialog"
-                        type="Transparent"
-                    />
-                </contentLeft>
-                <contentMiddle>
-                    <Title id="UserDetailsTitle" text="User Details"/>
-                </contentMiddle>
-            </Bar>
-        </customHeader>
-        <content>
-            <layout:SimpleForm id="UserDetailsform">
-                <layout:content>
-                    <Label id="UserDetailsID" text="ID"/>
-                    <Text id="UserDetailsIDtxt" text="{ID}" />
-                    
-                    <Label id="UserDetailsname" text="User Name"/>
-                    <Text id="UserDetailsnametxt" text="{username}" />
-                    <Label id="UserDetailsemail" text="Email"/>
-                    <Text id="UserDetailsemailtxt" text="{email}" />
-                </layout:content>
-            </layout:SimpleForm>
-        </content>
-        <Title id="iduserborrowedbooks" text="Borrowed Books"></Title>
-<Table id="UserDetailsTable" inset="false" items="{/Book}" >
-    <columns>
-        <Column id="UserdetailsColumn1">
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:layout="sap.ui.layout.form">
+  <Dialog
+      id="idProfileDialog"
+      contentWidth="30%"
+      contentHeight="20%"
+      titleAlignment="Center"
+      resizable="true"
+      draggable="true"
+  >
+    <customHeader>
+      <Bar id="UserDetailsheader">
+        <contentLeft>
+          <Button id="UserDetailsnavbackbtn"
+              icon="sap-icon://nav-back"
+              press="onCloseProfileDialog"
+              type="Transparent"
+          />
+        </contentLeft>
+        <contentMiddle>
+          <Title id="UserDetailsTitle" text="User Details"/>
+        </contentMiddle>
+      </Bar>
+    </customHeader>
+    <content>
+      <layout:SimpleForm id="UserDetailsform">
+        <layout:content>
+          <Label id="UserDetailsID" text="ID"/>
+          <Text id="UserDetailsIDtxt" text="{ID}" />
+          
+          <Label id="UserDetailsname" text="User Name"/>
+          <Text id="UserDetailsnametxt" text="{username}" />
+          <Label id="UserDetailsemail" text="Email"/>
+          <Text id="UserDetailsemailtxt" text="{email}" />
+        </layout:content>
+      </layout:SimpleForm>
+      <!-- <Title id="iduserborrowedbooks" text="Borrowed Books"></Title>
+      <Table id="UserDetailsTable" inset="false" items="{path: 'loans'}" > 
+        <columns>
+          <Column id="UserdetailsColumn1">
             <Text id="UserdetailsText2" text="ISBN" />
-        </Column>
-        <Column id="UserdetailsColumn2">
+          </Column>
+          <Column id="UserdetailsColumn2">
             <Text id="UserdetailsText3" text="Title" />
-        </Column>
-        <Column id="UserdetailsColumn3">
-            <Text id="UserdetailsText4" text="Barrowed Date" />
-        </Column>
-        <Column id="UserdetailsColumn4">
-            <Text id="UserdetailsText5" text="Due date" />
-        </Column>
-    </columns>
-    <items>
-        <ColumnListItem id="UserdetailsColumnListItem1">
+          </Column>
+          <Column id="UserdetailsColumn3">
+            <Text id="UserdetailsText4" text="Borrowed Date" />
+          </Column>
+          <Column id="UserdetailsColumn4">
+            <Text id="UserdetailsText5" text="Due Date" />
+          </Column>
+        </columns>
+        <items>
+          <ColumnListItem id="UserdetailsColumnListItem1">
             <cells>
-                <Text id="UserdetailsText7" text="{}" />
-                <Text id="UserdetailsText8" text="{}" />
-                <Text id="UserdetailsText9" text="{}" />
-                <Text id="UserdetailsText10" text="{}" />
+              <Text id="UserdetailsText7" text="{book/ISBN}" />
+              <Text id="UserdetailsText8" text="{book/title}" />
+              <Text id="UserdetailsText9" text="{issueDate}" />
+              <Text id="UserdetailsText10" text="{dueDate}" />
             </cells>
-        </ColumnListItem>
-    </items>
-</Table>
-
-    </Dialog>
+          </ColumnListItem>
+        </items>
+      </Table> -->
+    </content>
+  </Dialog>
 </core:FragmentDefinition>
+

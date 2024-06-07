@@ -1,11 +1,13 @@
 
-
-
 <core:FragmentDefinition xmlns:table="sap.ui.table" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:layout="sap.ui.layout.form">
   <Dialog
       id="idActiveLoansDialog"
       title="Active Loans"
-      class="sapUiResponsivePadding">
+      class="sapUiResponsivePadding"
+      contentHeight="80%"
+      contentWidth="80%"
+      
+      >
       <customHeader>
             <Bar id="Issutitleheader">
             <contentLeft>
@@ -19,47 +21,72 @@
         </customHeader>
       
       <content>
-          <table:Table
-              id="idActiveLoansTable"
-              rows="{
-                  path: '',
-                  filters: [
-                      {  }
-                  ]
-              }">
-              <table:columns>
-                  <table:Column>
-                      <Label text="User Id" />
-                      <table:template>
-                          <Text text="{}" />
-                      </table:template>
-                  </table:Column>
-                  <table:Column>
-                      <Label text="User Name" />
-                      <table:template>
-                          <Text text="{}" />
-                      </table:template>
-                  </table:Column>
-                  <table:Column>
-                      <Label text="ISBN" />
-                      <table:template>
-                          <Text text="{}" />
-                      </table:template>
-                  </table:Column>
-                  <table:Column>
-                      <Label text="Borrowed Date" />
-                      <table:template>
-                          <Text text="{}" />
-                      </table:template>
-                  </table:Column>
-                  <table:Column>
-                      <Label text="Due Date" />
-                      <table:template>
-                          <Text text="{}" />
-                      </table:template>
-                  </table:Column>
-              </table:columns>
-          </table:Table>
+            <Table
+                id="idReserveTable"
+                inset="false"
+                mode="MultiSelect"
+                items="{/Issuebooks}"
+            >
+
+                <columns>
+                    <Column id="idReserveTablecol1">
+                        <Text
+                            id="idReseveID"
+                            text="ISBN"
+                        />
+                    </Column>
+                    <Column id="idReservetabcol2">
+                        <Text
+                            id="idColBookID"
+                            text="User ID"
+                        />
+                    </Column>
+                    <Column id="idBooktabcol4">
+                        <Text
+                            id="idBooktitle"
+                            text="Book Title"
+                        />
+                    </Column>
+                    <Column id="idresrvdatetabcol4">
+                        <Text
+                            id="idreservedate"
+                            text="Reserve Date"
+                        />
+                    </Column>
+                    <Column  id="idavailablitytabcol5">
+                        <Text
+                            id="idavailablity"
+                            text="Available Title"
+                        />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem id="idresvColListItems">
+                        <cells>
+                            <Text
+                                id="idresvUserIdValue"
+                                text="{ISBNno}"
+                            />
+                            <Text
+                                id="idreBookIdValue"
+                                text="{users}"
+                            />
+                            <Text
+                                id="idBooktitleValue"
+                                text="{titles}"
+                            />
+                            <Text
+                                id="idreReserDateValue"
+                                text="{reservedDate}"
+                            />
+                             <Text
+                                id="idavaiblityValue"
+                                text="{AvailableQuantity}"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
       </content>
 
   </Dialog>

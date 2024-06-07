@@ -136,6 +136,16 @@
           "name": "RouteSignup",
           "pattern": "signup:?query:",
           "target": ["TargetSignup"]
+        },
+        {
+          "name": "RouteIssuetitle",
+          "pattern": "Issuetitle:?query:",
+          "target": ["TargetIssuetitle"]
+        },
+        {
+          "name": "RouteActiveLoans",
+          "pattern": "ActiveLoans:?query:",
+          "target": ["TargetActiveLoans"]
         }
       ],
       "targets": {
@@ -173,6 +183,20 @@
           "clearControlAggregation": false,
           "viewId": "Signup",
           "viewName": "Signup"
+        },
+        "TargetIssuetitle": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Issuetitle",
+          "viewName": "Issuetitle"
+        },
+        "TargetActiveLoans": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ActiveLoans",
+          "viewName": "ActiveLoans"
         }
       }
     },

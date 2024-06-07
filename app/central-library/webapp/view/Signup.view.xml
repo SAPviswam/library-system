@@ -8,10 +8,11 @@
           <Text id="signtext" text="User Details"></Text>
             <!-- New Label and Select control for User Type -->
             <Label id="userTypeLabel" text="User Type"/>
-            <Select id="userTypeInput" selectedKey="Main">
-              <core:Item id="signitem0" key="Main" text=""/>
-              <core:Item id="signitem2" key="User" text="User"/>
-            </Select>
+            <!-- <Select id="userTypeInput" selectedKey="Main"> -->
+              <!-- <core:Item id="signitem0" key="Main" text=""/>
+              <core:Item id="signitem2" key="User" text="User"/> -->
+              <Input id="idUser" value="User" editable="false"/>
+            <!-- </Select> -->
             <Label id="idLabel" text="ID"/>
             <Input id="idInput" placeholder="Enter ID"/>
 

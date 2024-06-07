@@ -1,0 +1,66 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+>
+    <Dialog id="adminissue_addUpDialog" class="addnewbook" resizable="true" contentWidth="20%">
+        <customHeader>
+            <Bar class="customBarBackground">
+                <contentMiddle>
+                    <Text id="adminissue_headtxt" text="Add New Title" />
+                </contentMiddle>
+            </Bar>
+        </customHeader>
+        <Label />
+        <HBox justifyContent="Center">
+            <Table inset="false">
+                <columns>
+                    <Column width="40%">
+                        <Text text="Field" />
+                    </Column>
+                    <Column width="60%">
+                        <Text text="Input" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Label text="ISBN" labelFor="adminissue_ISBNInput" />
+                            <Input id="adminissue_ISBNInput" placeholder="Enter ISBN no" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Label text="Title" labelFor="adminissue_BookInput" />
+                            <Input id="adminissue_BookInput" placeholder="Enter Book Title" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Label text="Author" labelFor="adminissue_AuthorInput" />
+                            <Input id="adminissue_AuthorInput" placeholder="Enter Author name" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Label text="Quantity" labelFor="adminissue_quantityInput" />
+                            <Input id="adminissue_quantityInput" placeholder="Enter Quantity" />
+                        </cells>
+                    </ColumnListItem>
+                    <ColumnListItem>
+                        <cells>
+                            <Label text="Genre" labelFor="adminissue_genreInput" />
+                            <Input id="adminissue_genreInput" placeholder="Enter genre" required="true" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </HBox>
+        <beginButton>
+            <Button text="Issue" press="onAddNewBook" />
+        </beginButton>
+        <endButton>
+            <Button text="Cancel" press="onCancel" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

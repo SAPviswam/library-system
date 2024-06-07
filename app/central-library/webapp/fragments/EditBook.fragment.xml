@@ -3,7 +3,7 @@
         <content>
             <VBox>
                 <Label text="ISBN" />
-                <Input id="editISBNInput" value="{oEditModel>/ISBN}" enabled="true" />
+                <Input id="editISBNInput" value="{oEditModel>/ISBN}" />
                 <Label text="Title" />
                 <Input id="editTitleInput" value="{oEditModel>/title}" />
                 <Label text="Author" />
@@ -17,10 +17,11 @@
             </VBox>
         </content>
         <beginButton>
-            <Button text="Modify" press="onModifyBook" />
+            <Button text="Save" press="onModifyBook" />
         </beginButton>
         <endButton>
-            <Button text="Cancel" press="onCancelEdit" />
+            <Button text="Cancel" press="onCancelEditBook" />
         </endButton>
     </Dialog>
 </core:FragmentDefinition>
+

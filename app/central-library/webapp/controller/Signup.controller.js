@@ -8,7 +8,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (BaseController) {
       oRouter.navTo("RouteLibrary");
     },
     onSignClear: function () {
-    this.byId("userTypeInput").setValue("");
+    // this.byId("userTypeInput").setValue("");
     this.byId("idInput").setValue("");
     this.byId("emailInput").setValue("");
     this.byId("passwordInput").setValue("");

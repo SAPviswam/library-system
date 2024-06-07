@@ -7,104 +7,104 @@
     xmlns:l="sap.ui.layout"
     xmlns:layout="sap.ui.layout"
     xmlns="sap.m">
-<Page id="idAdminPage">
+    <Page id="idAdminPage">
 
-    <VBox id="idAdminVBox" class="sapUiSmallMargin">
-        <!-- Toolbar with navigation and action buttons -->
-        <Toolbar id="idAdminToolbar">
-            <Button id="idNavButton" icon="sap-icon://nav-back" press="onPressback" />
-            <ToolbarSpacer id="_IDGenToolbarSpacer1" />
-            <Title id="idAdminPageTitle" text="Admin Page" />
-            <ToolbarSpacer id="_IDGenToolbarSpacer2" />
-            <Button id="idFullScreenButton" icon="sap-icon://full-screen" press="onPressFullScreen" />
-            <!-- <Button id="idNotificationButton" icon="sap-icon://bell" press="onPressNotification" /> -->
-            <Button id="idProfileButton" icon="sap-icon://person-placeholder" press="onPressAdmin"/>
-        </Toolbar>
+        <VBox id="idAdminVBox" class="sapUiSmallMargin">
+            <!-- Toolbar with navigation and action buttons -->
+            <Toolbar id="idAdminToolbar">
+                <Button id="idNavButton" icon="sap-icon://nav-back" press="onPressback" />
+                <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                <Title id="idAdminPageTitle" text="Admin Page" />
+                <ToolbarSpacer id="_IDGenToolbarSpacer2" />
+                <Button id="idFullScreenButton" icon="sap-icon://full-screen" press="onPressFullScreen" />
+                <!-- <Button id="idNotificationButton" icon="sap-icon://bell" press="onPressNotification" /> -->
+                <Button id="idProfileButton" icon="sap-icon://person-placeholder" press="onPressAdmin"/>
+            </Toolbar>
 
-        <!-- Admin Dashboard -->
-        <f:SimpleForm
-            class="adminFormHeader"
-            id="idAdminDashboardForm"
-            editable="false"
-            layout="ResponsiveGridLayout"
-            title="Admin Dashboard"
-            labelSpanXL="3"
-            labelSpanL="3"
-            labelSpanM="3"
-            labelSpanS="12"
-            adjustLabelSpan="false"
-            emptySpanXL="4"
-            emptySpanL="4"
-            emptySpanM="4"
-            emptySpanS="0"
-            columnsXL="1"
-            columnsL="1"
-            columnsM="1"
-            singleContainerFullSize="false">
-            
-            <f:content>
-                <Label id="_IDGenLabel1" text="Total Titles Quantity" />
-                <Text id="idTotalBooksText" text="{}" />
-                <Label id="_IDGenLabel2" text="Active loans" />
-                <Text id="idActiveLoansText" text="{}" />
-            </f:content>
-        </f:SimpleForm>
+            <!-- Admin Dashboard -->
+            <f:SimpleForm
+                class="adminFormHeader"
+                id="idAdminDashboardForm"
+                editable="false"
+                layout="ResponsiveGridLayout"
+                title="Admin Dashboard"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false">
+                
+                <f:content>
+                    <Label id="_IDGenLabel1" text="Total Titles Quantity" />
+                    <Text id="idTotalBooksText" text="" />
+                    <Label id="_IDGenLabel2" text="Active loans" />
+                    <Text id="idActiveLoansText" text="" />
+                </f:content>
+            </f:SimpleForm>
 
-        <!-- Book Details Table -->
-        <Table
-            id="idBookTable"
-            alternateRowColors="true"
-            mode="MultiSelect"
-            items="{path:'/Book', parameters:{ $count:true}}"
-            >
-            
-            <headerToolbar>
-                <OverflowToolbar id="idBookTableToolbar">
-                    <Title id="idBooksTitle" text="Total Titles:- {/Book/$count}" />
-                    <ToolbarSpacer id="_IDGenToolbarSpacer3" />
-                    <SearchField id="SearchField1" width="12rem" placeholder="Search" value="{/searchValue}" search="onSearch" />
-                    <Button id="idAddTitleButton" icon="sap-icon://add" press="onPressAdd" />
-                    <Button id="idDeleteButton" icon="sap-icon://delete" press="onPressDelete" />
-                    <Button id="idEditButton" icon="sap-icon://edit" press="onPressEdit" />
-                    <Button id="idActiveloansButton" text="Active Loans" type="Emphasized" press="onPressActiveloans"></Button>
-                    <Button id="idIssueButton" text="Issue title" type="Emphasized" press="onPressIssuetitle"></Button> 
-                </OverflowToolbar>
-            </headerToolbar>
+            <!-- Book Details Table -->
+            <Table
+                id="idBookTable"
+                alternateRowColors="true"
+                mode="MultiSelect"
+                items="{path:'/Book', parameters:{ $count:true}}"
+                >
+                
+                <headerToolbar>
+                    <OverflowToolbar id="idBookTableToolbar">
+                        <Title id="idBooksTitle" text="Total Titles:- {/Book/$count}" />
+                        <ToolbarSpacer id="_IDGenToolbarSpacer3" />
+                        <SearchField id="SearchField1" width="12rem" placeholder="Search" search="onSearch" />
+                        <Button id="idAddTitleButton" icon="sap-icon://add" press="onPressAdd" />
+                        <Button id="idDeleteButton" icon="sap-icon://delete" press="onPressDelete" />
+                        <Button id="idEditButton" icon="sap-icon://edit" press="onPressEdit" />
+                        <Button id="idActiveloansButton" text="Active Loans" type="Emphasized" press="onPressActiveloans"></Button>
+                        <Button id="idIssueButton" text="Issue title" type="Emphasized" press="onPressIssuetitle"></Button> 
+                    </OverflowToolbar>
+                </headerToolbar>
 
-            <columns>
-                <Column id="_IDGenColumn1">
-                    <Text id="_IDGenText1" text="ISBN" />
-                </Column>
-                <Column id="_IDGenColumn2">
-                    <Text id="_IDGenText2" text="Title" />
-                </Column>
-                <Column id="_IDGenColumn3">
-                    <Text id="_IDGenText3" text="Author" />
-                </Column>
-                <Column id="_IDGenColumn4">
-                    <Text id="_IDGenText4" text="Quantity" />
-                </Column>
-                <Column id="_IDGenColumn5">
-                    <Text id="_IDGenText5" text="Abailable Quantity" />
-                </Column>
-                <Column id="_IDGenColumn6">
-                    <Text id="_IDGenText06" text="Genre" />
-                </Column>
-            </columns>
-            
-            <items>
-                <ColumnListItem id="_IDGenColumnListItem1">
-                    <cells>
-                        <Text id="_IDGenText6" text="{ISBN}" />
-                        <Text id="_IDGenText7" text="{title}" />
-                        <Text id="_IDGenText8" text="{author}" />
-                        <Text id="_IDGenText9" text="{quantity}" />
-                        <Text id="_IDGenText10" text="{availableQuantity}" />
-                        <Text id="_IDGenText11" text="{genre}" />
-                    </cells>
-                </ColumnListItem>
-            </items>
-        </Table>
-    </VBox>
+                <columns>
+                    <Column id="_IDGenColumn1">
+                        <Text id="_IDGenText1" text="ISBN" />
+                    </Column>
+                    <Column id="_IDGenColumn2">
+                        <Text id="_IDGenText2" text="Title" />
+                    </Column>
+                    <Column id="_IDGenColumn3">
+                        <Text id="_IDGenText3" text="Author" />
+                    </Column>
+                    <Column id="_IDGenColumn4">
+                        <Text id="_IDGenText4" text="Quantity" />
+                    </Column>
+                    <Column id="_IDGenColumn5">
+                        <Text id="_IDGenText5" text="Abailable Quantity" />
+                    </Column>
+                    <Column id="_IDGenColumn6">
+                        <Text id="_IDGenText06" text="Genre" />
+                    </Column>
+                </columns>
+                
+                <items>
+                    <ColumnListItem id="_IDGenColumnListItem1">
+                        <cells>
+                            <Text id="_IDGenText6" text="{ISBN}" />
+                            <Text id="_IDGenText7" text="{title}" />
+                            <Text id="_IDGenText8" text="{author}" />
+                            <Text id="_IDGenText9" text="{quantity}" />
+                            <Text id="_IDGenText10" text="{availableQuantity}" />
+                            <Text id="_IDGenText11" text="{genre}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </VBox>
     </Page>
 </mvc:View>

@@ -1,78 +1,3 @@
-<!-- <core:FragmentDefinition xmlns="sap.m"
-    xmlns:core="sap.ui.core"
-    xmlns:l="sap.ui.layout"
-    >
-    <Dialog id="addUpDialog" class="addnewbook" resizable="true"  contentWidth="20%">
-        <customHeader >
-            <Bar id="bar1" class="customBarBackground">
-                <contentMiddle >
-                    <Text id="headtxt" text="Add New Title"/>
-                </contentMiddle>
-            </Bar>
-        </customHeader>
-        <Label id="labelgap"/>
-        <HBox id="content" justifyContent="Center">
-            <Table id="bookDetailsTable" inset="false">
-                <columns>
-                    <Column id="col-1" width="40%">
-                        <Text id="col-1-text" text="Field" />
-                    </Column>
-                    <Column id="col-2" width="60%">
-                        <Text id="col-2-text" text="Input" />
-                    </Column>
-                </columns>
-                <items>
-                    <ColumnListItem id="col-item-1">
-                        <cells>
-                            <Label id="col-1-isbn" text="ISBN" labelFor="ISBNInput" />
-                            <Input id="ISBNInput" placeholder="Enter ISBN no" class="input" />
-                        </cells>
-                    </ColumnListItem>
-                    <ColumnListItem id="col-item-2">
-                        <cells>
-                            <Label id="col-2-title" text="Title" labelFor="BookInput" />
-                            <Input id="BookInput" placeholder="Enter Book Title" class="input" />
-                        </cells>
-                    </ColumnListItem>
-                    <ColumnListItem id="col-item-3">
-                        <cells>
-                            <Label id="col-3-author" text="Author" labelFor="AuthorInput" />
-                            <Input id="AuthorInput" placeholder="Enter Author name" class="input" />
-                        </cells>
-                    </ColumnListItem>
-                    <ColumnListItem id="col-item-4">
-                        <cells>
-                            <Label id="col-4-quantity" text="Quantity" labelFor="quantityInput" />
-                            <Input id="quantityInput" placeholder="Enter Quantity" class="input" />
-                        </cells>
-                    </ColumnListItem>
-                    <ColumnListItem id="col-item-5">
-                        <cells>
-                            <Label id="col-5-genre" text="Genre" labelFor="genreInput" />
-                            <Select id="userTypeInput" selectedKey="Main">
-                                <core:Item id="signitem0" key="Main" text=""/>
-                                <core:Item id="signitem2" key="User" text="User"/>
-                            </Select>
-                        </cells>
-                    </ColumnListItem>
-                </items>
-            </Table>
-        </HBox>
-
-        <beginButton>
-            <Button id="addButton" text="Add" press="onAddNewBook" />
-        </beginButton>
-        <endButton>
-            <Button id="cancelButton" text="Cancel" press="onCancel" />
-        </endButton>
-    </Dialog>
-</core:FragmentDefinition>
-
-
-
- -->
-
-
 <core:FragmentDefinition
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
@@ -86,70 +11,65 @@
                 </contentMiddle>
             </Bar>
         </customHeader>
-        <Label />
-        <HBox justifyContent="Center">
-            <Table inset="false">
-                <columns>
-                    <Column width="40%">
-                        <Text text="Field" />
-                    </Column>
-                    <Column width="60%">
-                        <Text text="Input" />
-                    </Column>
-                </columns>
-                <items>
-                    <ColumnListItem>
-                        <cells>
-                            <Label text="ISBN" labelFor="ISBNInput" />
-                            <Input id="ISBNInput" placeholder="Enter ISBN no" />
-                        </cells>
-                    </ColumnListItem>
-                    <ColumnListItem>
-                        <cells>
-                            <Label text="Title" labelFor="BookInput" />
-                            <Input id="BookInput" placeholder="Enter Book Title" />
-                        </cells>
-                    </ColumnListItem>
-                    <ColumnListItem>
-                        <cells>
-                            <Label text="Author" labelFor="AuthorInput" />
-                            <Input id="AuthorInput" placeholder="Enter Author name" />
-                        </cells>
-                    </ColumnListItem>
-                    <ColumnListItem>
-                        <cells>
-                            <Label text="Quantity" labelFor="quantityInput" />
-                            <Input id="quantityInput" placeholder="Enter Quantity" />
-                        </cells>
-                    </ColumnListItem>
-                     <!-- <ColumnListItem>
-                        <cells>
-                            <Label text="Available Quantity" labelFor="availableqQantityInput" />
-                            <Input id="alailableQuantityInput" placeholder="Enter Quantity" />
-                        </cells>
-                    </ColumnListItem> -->
-                    <ColumnListItem>
-                        <cells>
-                            <Label text="Genre" labelFor="userTypeInput" />
-                            <!-- <Select id="userTypeInput">
-                                <core:Item key="Fiction" text="Fiction" />
-                                <core:Item key="Adventure" text="Adventure" />
-                                <core:Item key="Classic" text="Classic" />
-                                <core:Item key="Romance" text="Romance" />
-                                <core:Item key="Historical" text="Historical" />
-                                <core:Item key="Philosophical" text="Philosophical" />
-                            </Select> -->
-                            <Input id="genreInput" placeholder="Enter genre" required="true" />
-                        </cells>
-                    </ColumnListItem>
-                </items>
-            </Table>
-        </HBox>
+        <VBox>
+            <Label />
+            <HBox justifyContent="Center">
+                <Table inset="false">
+                    <columns>
+                        <Column width="40%">
+                            <Text text="Field" />
+                        </Column>
+                        <Column width="60%">
+                            <Text text="Input" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Label text="ISBN" labelFor="ISBNInput" />
+                                <Input id="ISBNInput" placeholder="Enter ISBN no" />
+                            </cells>
+                        </ColumnListItem>
+                        <ColumnListItem>
+                            <cells>
+                                <Label text="Title" labelFor="BookInput" />
+                                <Input id="BookInput" placeholder="Enter Book Title" />
+                            </cells>
+                        </ColumnListItem>
+                        <ColumnListItem>
+                            <cells>
+                                <Label text="Author" labelFor="AuthorInput" />
+                                <Input id="AuthorInput" placeholder="Enter Author name" />
+                            </cells>
+                        </ColumnListItem>
+                        <ColumnListItem>
+                            <cells>
+                                <Label text="Quantity" labelFor="quantityInput" />
+                                <Input id="quantityInput" placeholder="Enter Quantity" />
+                            </cells>
+                        </ColumnListItem>
+                        <ColumnListItem>
+                            <cells>
+                                <Label text="Genre" labelFor="userTypeInput" />
+                                <Select id="userTypeInput">
+                                    <core:Item key="Fiction" text="Fiction" />
+                                    <core:Item key="Adventure" text="Adventure" />
+                                    <core:Item key="Classic" text="Classic" />
+                                    <core:Item key="Romance" text="Romance" />
+                                    <core:Item key="Historical" text="Historical" />
+                                    <core:Item key="Philosophical" text="Philosophical" />
+                                </Select>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </HBox>
+        </VBox>
         <beginButton>
             <Button text="Add" press="onAddNewBook" />
         </beginButton>
         <endButton>
-            <Button text="Cancel" press="onCancel" />
+            <Button text="Cancel" press="onCancelNewBook" />
         </endButton>
     </Dialog>
 </core:FragmentDefinition>

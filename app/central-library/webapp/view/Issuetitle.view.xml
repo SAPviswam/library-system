@@ -1,0 +1,56 @@
+
+
+<mvc:View controllerName="com.app.centrallibrary.controller.Issuetitle"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table" 
+    xmlns:core="sap.ui.core"  
+    xmlns:layout="sap.ui.layout.form">
+    <Page >
+      <customHeader>
+        <Bar id="idIssutitleheader">
+          <contentLeft>
+            <Title id="idissueTitle" text="Issue Title" />
+          </contentLeft>
+          <contentRight>
+            <Button id="Issuetitlebtn" text="Issue Title" press="onIssuetitle" type="Emphasized" />
+            <Button id="Issuetitleclosebtn" text="Close" press="onCloseIssuetitle" type="Emphasized"/>
+          </contentRight>
+        </Bar>
+      </customHeader>
+      
+      <content>
+          <table:Table
+              id="idActiveLoansTable"
+              rows="{/Issuebooks}">
+              <table:columns>
+                  <table:Column>
+                      <Label text="User Id" />
+                      <table:template>
+                          <Text text="{ID}" />
+                      </table:template>
+                  </table:Column>
+                  <table:Column>
+                      <Label text="User Name" />
+                      <table:template>
+                          <Text text="{users}" />
+                      </table:template>
+                  </table:Column>
+                  <table:Column>
+                      <Label text="ISBN" />
+                      <table:template>
+                          <Text text="{ISBNno}" />
+                      </table:template>
+                  </table:Column>
+                  <table:Column>
+                      <Label text="Borrowed Date" />
+                      <table:template>
+                          <Text text="{}" />
+                      </table:template>
+                  </table:Column>
+              </table:columns>
+          </table:Table>
+      </content>
+    </Page>
+</mvc:View>

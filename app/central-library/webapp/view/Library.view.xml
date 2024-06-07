@@ -14,8 +14,6 @@
         class="libpage"
     >
 
-
-
         <ScrollContainer
             id="scrollContainer"
             vertical="true"

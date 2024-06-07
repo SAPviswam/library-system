@@ -29,15 +29,15 @@
                     <Text text="{ID}" />
                 </HBox>
                 <HBox>
-                    <Label text="Role:" class="admindetailstxt"/>
+                    <Label text="Name:" class="admindetailstxt"/>
                     <Text text="{username}" />
                 </HBox>
                 <HBox>
-                    <Label text="Username:" class="admindetailstxt"/>
+                    <Label text="Email:" class="admindetailstxt"/>
                     <Text text="{email}" />
                 </HBox>
                 <HBox>
-                    <Label text="Email:" class="admindetailstxt"/>
+                    <Label text="Role:" class="admindetailstxt"/>
                     <Text text="{role}" />
                 </HBox>
             </VBox>

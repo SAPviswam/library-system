@@ -1,39 +1,18 @@
 
 sap.ui.define([
   "sap/ui/core/mvc/Controller",
-  "sap/ui/model/json/JSONModel",
-  "sap/ui/model/resource/ResourceModel",
   "sap/m/MessageToast",
-], function (Controller, JSONModel, ResourceModel, MessageToast) {
+], function (Controller, MessageToast) {
   "use strict";
 
   return Controller.extend("com.app.centrallibrary.controller.User", {
-    // onInit: function() {
-    //     var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-    //     oRouter.getRoute("RouteUser").attachMatched(this._onRouteMatched, this);
-    // },
-    // _onRouteMatched: function(oEvent) {
-    //     var {userID} = oEvent.getParameter("arguments");
-    //     var sUsername = oArgs.username;
-    //     var oViewModel = new JSONModel({
-    //         username: sUsername
-    //     });
-    //     this.getView().setModel(oViewModel, "viewModel");
-    //     //  Fetch the username from the model and set it to the view
-    //   // var oViewModel = this.getView().getModel("viewModel");
-    //   // if (oViewModel) {
-    //   //     oViewModel.setProperty("/username", sUsername);
-    //   // } else {
-    //   //     oViewModel = new JSONModel({
-    //   //         username: sUsername
-    //   //     });
-    //   //     this.getView().setModel(oViewModel, "viewModel");
-    //   // }
-    // },
+
     onInit: function () {
       const oRouter = this.getOwnerComponent().getRouter();
       oRouter.attachRoutePatternMatched(this.onCurrentUserDetails, this);
+
     },
+
     onCurrentUserDetails: function (oEvent) {
       const { userId } = oEvent.getParameter("arguments");
       this.ID = userId;
@@ -43,21 +22,21 @@ sap.ui.define([
         expand: ''
       });
     },
-    // onPressUserProfile: function () {
-    //   this.loadProfileDialog().then(function (oDialog) {
-    //     oDialog.open();
-    //   });
-    // },
 
     onPressUserProfile: function () {
       this.loadProfileDialog().then(function (oDialog) {
-          // Bind user data to dialog
-          var oViewModel = this.getView().getModel();
-          oDialog.setModel(oViewModel);
-          oDialog.bindElement(`/User(${this.ID})`); // Assuming ID is the user ID stored in the controller
-          oDialog.open();
+        // Bind user data to dialog
+        var oViewModel = this.getView().getModel();
+        oDialog.setModel(oViewModel);
+        oDialog.bindElement({
+          path: `/User(${this.ID})`,
+          parameters: {
+            expand: 'loans' // Ensure the loans data is expanded
+          }
+        });
+        oDialog.open();
       }.bind(this));
-  },
+    },
 
     loadProfileDialog: async function () {
       if (!this.oDialogProfile) {
@@ -85,11 +64,9 @@ sap.ui.define([
           and: false
         }));
       }
-
       // Get the table and binding
       var oTable = this.byId("bookDetailsTable");
       var oBinding = oTable.getBinding("items");
-
       // Apply the filters to the binding
       oBinding.filter(aFilters);
     },
@@ -100,8 +77,59 @@ sap.ui.define([
       }
     },
 
-    onReserveBook: function () {
-      sap.m.MessageToast.show("Your request was sended to the Admin");
-    }
+
+    onReserveBook: async function () {
+      debugger;
+      const oView = this.getView();
+      var userId = this.ID;
+      var oTable = this.getView().byId("bookDetailsTable");
+      var oSelectedItems = oTable.getSelectedItems();
+
+      // Check if no book is selected
+      if (oSelectedItems.length === 0) {
+        MessageToast.show("Please select a book to reserve");
+        return;
+      }
+
+      // Check if more than one book is selected
+      if (oSelectedItems.length > 1) {
+        MessageToast.show("Please select only one book to reserve");
+        return;
+      }
+
+      var oSelected = oSelectedItems[0];
+      var oAvailStock = oSelected.getBindingContext().getObject().availableQuantity;
+
+      if (oSelected) {
+        var oAvailStock = oSelected.getBindingContext().getObject().availableQuantity,
+          oBookName = oSelected.getBindingContext().getObject().title,
+          oISBN = oSelected.getBindingContext().getObject().ISBN,
+          oavailableQty = oSelected.getBindingContext().getObject().availableQuantity,
+          oCurrentDate = new Date();
+        let day = oCurrentDate.getDate(),
+          month = oCurrentDate.getMonth() + 1,
+          year = oCurrentDate.getFullYear();
+        let currentDate = `${day}-${month}-${year}`;
+
+        if (parseInt(oAvailStock) > 0) {
+          const oBinding = oView.getModel().bindList("/Issuebooks");
+          oBinding.create({
+            ISBNno: oISBN,
+            users: userId,
+            titles: oBookName,
+            reservedDate: currentDate,
+            AvailableQuantity: oavailableQty
+
+          });
+
+          MessageToast.show("Reservation Sent to Admin");
+        } else {
+          MessageToast.show("Book is available; you don't need to reserve");
+        }
+      }
+    },
+
+   
+    
   });
 });
